@@ -1,0 +1,12 @@
+---
+- puppetlabs-apache
+- puppetlabs-apt
+- puppetlabs-concat
+- puppetlabs-firewall
+- puppetlabs-inifile
+- puppetlabs-java_ks
+- puppetlabs-mysql
+- puppetlabs-ntp
+- puppetlabs-postgresql
+- puppetlabs-stdlib
+- puppetlabs-vcsrepo
