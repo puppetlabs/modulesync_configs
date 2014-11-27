@@ -1,6 +1,10 @@
 ---
 .travis.yml:
-  script: "\"bundle exec rake validate && bundle exec rake lint && bundle exec rake spec SPEC_OPTS='--format documentation'\""
+  script:
+    - bundle exec rake validate
+    - bundle exec rake lint
+    - bundle exec rake spec SPEC_OPTS='--format documentation'
+    - bundle exec rake metadata
   includes:
   - rvm: 1.8.7
     env: PUPPET_GEM_VERSION="~> 3.0"
