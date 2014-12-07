@@ -17,3 +17,14 @@ matrix:
 <% end -%>
 notifications:
   email: false
+deploy:
+  provider: puppetforge
+  user: <%= @configs['forge_login'] %>
+  password:
+    secure: "<%= @configs['forge_password'] %>"
+  on:
+    tags: true
+    # all_branches is required to use tags
+    all_branches: true
+    # Only publish if our main Ruby target builds
+    rvm: 1.9.3
