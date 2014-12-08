@@ -3,26 +3,29 @@
   script: "\"bundle exec rake validate && bundle exec rake lint && bundle exec rake spec SPEC_OPTS='--format documentation'\""
   includes:
   - rvm: 1.8.7
-    env: PUPPET_GEM_VERSION="~> 3.0"
+    env: PUPPET_GEM_VERSION="~> 2.7.0" FACTER_GEM_VERSION="~> 1.6.0"
+  - rvm: 1.8.7
+    env: PUPPET_GEM_VERSION="~> 2.7.0" FACTER_GEM_VERSION="~> 1.7.0"
   - rvm: 1.9.3
     env: PUPPET_GEM_VERSION="~> 3.0"
   - rvm: 2.0.0
     env: PUPPET_GEM_VERSION="~> 3.0"
 Gemfile:
   required:
-  - gem: rake
-  - gem: rspec-puppet
-  - gem: puppetlabs_spec_helper
-  - gem: serverspec
-  - gem: puppet-lint
-  - gem: beaker
-  - gem: beaker-rspec
-  - gem: pry
-  - gem: simplecov
+    ':development, :unit_tests':
+      - gem: rake
+      - gem: rspec-puppet
+      - gem: puppetlabs_spec_helper
+      - gem: puppet-lint
+      - gem: simplecov
+      - gem: puppet_facts
+    ':system_tests':
+      - gem: beaker-rspec
+      - gem: serverspec
 Rakefile:
   default_disabled_lint_checks:
+  - 'relative'
   - 'disable_80chars'
   - 'disable_class_inherits_from_params_class'
-  - 'disable_class_parameter_defaults'
   - 'disable_documentation'
   - 'disable_single_quote_string_with_variables'
