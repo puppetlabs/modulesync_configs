@@ -19,6 +19,7 @@ Gemfile:
       - gem: puppet-lint
       - gem: simplecov
       - gem: puppet_facts
+      - gem: json
     ':system_tests':
       - gem: beaker-rspec
       - gem: serverspec
