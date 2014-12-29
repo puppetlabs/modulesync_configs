@@ -3,10 +3,13 @@
 - puppetlabs-apt
 - puppetlabs-concat
 - puppetlabs-firewall
+- puppetlabs-haproxy
 - puppetlabs-inifile
+- puppetlabs-java
 - puppetlabs-java_ks
 - puppetlabs-mysql
 - puppetlabs-ntp
 - puppetlabs-postgresql
 - puppetlabs-stdlib
+- puppetlabs-tomcat
 - puppetlabs-vcsrepo
