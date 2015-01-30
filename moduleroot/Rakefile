@@ -7,3 +7,8 @@ PuppetLint.configuration.fail_on_warnings
 PuppetLint.configuration.send('<%= check %>')
 <% end -%>
 PuppetLint.configuration.ignore_paths = ["spec/**/*.pp", "pkg/**/*.pp"]
+
+desc "Lint metadata.json file"
+task :metadata do
+  sh "metadata-json-lint metadata.json"
+end
