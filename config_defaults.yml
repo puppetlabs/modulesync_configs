@@ -14,7 +14,10 @@ Gemfile:
   required:
     ':development, :unit_tests':
       - gem: rake
+      - gem: rspec
+        version: '3.1.7'
       - gem: rspec-puppet
+        version: '~> 1.0'
       - gem: puppetlabs_spec_helper
       - gem: puppet-lint
       - gem: simplecov
