@@ -14,7 +14,7 @@ Gemfile:
   required:
     ':development, :unit_tests':
       - gem: rake
-      - gem: rspec
+      - gem: rspec-core
         version: '3.1.7'
       - gem: rspec-puppet
         version: '~> 1.0'
