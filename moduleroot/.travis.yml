@@ -2,6 +2,7 @@
 language: ruby
 bundler_args: --without system_tests
 script: <%= @configs['script'] %>
+sudo: <%= @configs['sudo'] %>
 matrix:
   fast_finish: true
   include:
