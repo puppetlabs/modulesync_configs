@@ -7,9 +7,11 @@
 - puppetlabs-inifile
 - puppetlabs-java
 - puppetlabs-java_ks
+- puppetlabs-mongodb
 - puppetlabs-mysql
 - puppetlabs-ntp
 - puppetlabs-postgresql
+- puppetlabs-rabbitmq
 - puppetlabs-stdlib
 - puppetlabs-tomcat
 - puppetlabs-vcsrepo
