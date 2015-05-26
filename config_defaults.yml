@@ -38,6 +38,8 @@ appveyor.yml:
       RUBY_VER: 21
     - PUPPET_GEM_VERSION: 4.0.0
       RUBY_VER: 21-x64
+  test_script:
+  - "bundle exec rake spec SPEC_OPTS='--format documentation'"
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'

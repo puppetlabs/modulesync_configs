@@ -25,7 +25,9 @@ build: off
 test_script:
 - bundle exec puppet -V
 - ruby -v
-- bundle exec rake spec SPEC_OPTS='--format documentation'
+<% @configs['test_script'].each do |script| -%>
+- <%= script %>
+<% end -%>
 notifications:
 - provider: Email
   to:
