@@ -1,17 +1,5 @@
 ---
-- puppetlabs-apache
-- puppetlabs-apt
-- puppetlabs-concat
-- puppetlabs-firewall
-- puppetlabs-haproxy
-- puppetlabs-inifile
-- puppetlabs-java
-- puppetlabs-java_ks
-- puppetlabs-mongodb
-- puppetlabs-mysql
-- puppetlabs-ntp
-- puppetlabs-postgresql
-- puppetlabs-rabbitmq
-- puppetlabs-stdlib
-- puppetlabs-tomcat
-- puppetlabs-vcsrepo
+- puppetlabs-powershell
+- puppetlabs-registry
+- puppetlabs-reboot
+- puppetlabs-wsus_client  
