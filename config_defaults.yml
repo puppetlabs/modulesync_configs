@@ -27,6 +27,7 @@ Gemfile:
     ':system_tests':
       - gem: beaker-rspec
       - gem: serverspec
+      - gem: beaker-puppet_install_helper
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
