@@ -13,5 +13,6 @@
 - puppetlabs-postgresql
 - puppetlabs-rabbitmq
 - puppetlabs-stdlib
+- puppetlabs-tagmail
 - puppetlabs-tomcat
 - puppetlabs-vcsrepo
