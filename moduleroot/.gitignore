@@ -1,12 +1,20 @@
 pkg/
 Gemfile.lock
+Gemfile.local
 vendor/
 spec/fixtures/
+log/
+junit/
 .vagrant/
 .bundle/
 coverage/
 .idea/
+.metadata
 *.iml
+.*.sw[op]
+.DS_Store
+.rspec
+
 <% if ! @configs['paths'].nil? -%>
 <% @configs['paths'].each do |path| -%>
 <%= path %>
