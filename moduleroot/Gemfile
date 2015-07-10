@@ -46,14 +46,13 @@ group <%= group %> do
 <%          end.max -%>
 <% gems.each do |gem| -%>
 <% if gem['gem'] == 'beaker-rspec' -%>
-  if beaker_version = ENV['BEAKER_VERSION']
-    gem 'beaker', *location_for(beaker_version)
-  end
   if beaker_rspec_version = ENV['BEAKER_RSPEC_VERSION']
     gem 'beaker-rspec', *location_for(beaker_rspec_version)
   else
     gem 'beaker-rspec',  :require => false
   end
+<% elsif gem['gem'] == 'beaker' -%>
+  gem 'beaker', *location_for(ENV['BEAKER_VERSION'] || '~> 2.2')
 <% else -%>
   gem '<%= gem['gem'] %>'<%= ", '#{gem['version']}'" if gem['version'] %>, <%= ' ' * (maxlen - gem['length']) %> :require => false<%= ", :git => '#{gem['git']}'" if gem['git'] %><%= ", :branch => '#{gem['branch']}'" if gem['branch'] %><%= " if #{gem['condition']}" if gem['condition'] %>
 <% end -%>
