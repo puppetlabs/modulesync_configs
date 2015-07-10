@@ -84,15 +84,8 @@ explicitly_require_windows_gems = false
 puppet_gem_location = gem_type(puppetversion)
 # This is not a perfect answer to the version check
 if puppet_gem_location != :gem || puppetversion < '3.5.0'
-  is_x64 = Gem::Platform.local.cpu == 'x64'
-  if is_x64
-    platform(:x64_mingw) do
-      explicitly_require_windows_gems = true
-    end
-  else
-    platform (:mingw) do
-      explicitly_require_windows_gems = true
-    end
+  if Gem::Platform.local.os == 'mingw32'
+    explicitly_require_windows_gems = true
   end
 end
 
