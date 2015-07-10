@@ -25,7 +25,7 @@ matrix:
 install:
 - SET PATH=C:\Ruby%RUBY_VER%\bin;%PATH%
 - gem install bundler --quiet --no-ri --no-rdoc
-- bundle install --jobs 4 --retry 2 --without system_tests
+- <%= @configs['appveyor_bundle_install'] %>
 - type Gemfile.lock
 build: off
 test_script:
