@@ -13,12 +13,12 @@
 Gemfile:
   required:
     ':development':
+      - gem: rake
       - gem: rspec
         version: '~>3.0'
+      - gem: puppet-lint
       - gem: puppetlabs_spec_helper
-      - gem: simplecov
       - gem: puppet_facts
-      - gem: json
       - gem: mocha
         version: '~>0.10.5'
     ':system_tests':
