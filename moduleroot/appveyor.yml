@@ -14,6 +14,12 @@ environment:
   - PUPPET_GEM_VERSION: <%= matrix['PUPPET_GEM_VERSION'] %>
     RUBY_VER: <%= matrix['RUBY_VER'] %>
 <% end -%>
+<% if @configs['matrix_extras'] -%>
+<%   @configs['matrix_extras'].each do |extra| -%>
+  - PUPPET_GEM_VERSION: <%= extra['PUPPET_GEM_VERSION'] %>
+    RUBY_VER: <%= extra['RUBY_VER'] %>
+<%   end -%>
+<% end -%>
 matrix:
   fast_finish: true
 install:
