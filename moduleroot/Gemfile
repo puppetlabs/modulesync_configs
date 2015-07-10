@@ -38,7 +38,8 @@ group <%= group %> do
 <%              'version' => gem['version'], -%>
 <%              'git'     => gem['git'], -%>
 <%              'branch'  => gem['branch'], -%>
-<%              'length'  => gem['gem'].length + (("', '".length if gem['version']) || 0) + gem['version'].to_s.length -%>
+<%              'length'  => gem['gem'].length + (("', '".length if gem['version']) || 0) + gem['version'].to_s.length, -%>
+<%              'condition'      => gem['condition'] -%>
 <%            } -%>
 <%          end.map do |gem| -%>
 <%            gem['length'] -%>
@@ -54,11 +55,10 @@ group <%= group %> do
     gem 'beaker-rspec',  :require => false
   end
 <% else -%>
-  gem '<%= gem['gem'] %>'<%= ", '#{gem['version']}'" if gem['version'] %>, <%= ' ' * (maxlen - gem['length']) %> :require => false<%= ", :git => '#{gem['git']}'" if gem['git'] %><%= ", :branch => '#{gem['branch']}'" if gem['branch'] %>
+  gem '<%= gem['gem'] %>'<%= ", '#{gem['version']}'" if gem['version'] %>, <%= ' ' * (maxlen - gem['length']) %> :require => false<%= ", :git => '#{gem['git']}'" if gem['git'] %><%= ", :branch => '#{gem['branch']}'" if gem['branch'] %><%= " if #{gem['condition']}" if gem['condition'] %>
 <% end -%>
 <% end -%>
 end
-
 <% end -%>
 
 # The recommendation is for PROJECT_GEM_VERSION, although there are older ways
