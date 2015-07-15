@@ -59,8 +59,8 @@ group <%= group %> do
 <% end -%>
 <% end -%>
 end
-<% end -%>
 
+<% end -%>
 # The recommendation is for PROJECT_GEM_VERSION, although there are older ways
 # of referencing these. Add them all for compatibility reasons. We'll remove
 # later when no issues are known. We'll prefer them in the right order.
