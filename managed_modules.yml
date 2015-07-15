@@ -1,5 +1,8 @@
 ---
+- puppetlabs-acl
+- puppetlabs-dsc
 - puppetlabs-powershell
 - puppetlabs-registry
 - puppetlabs-reboot
 - puppetlabs-wsus_client
+- puppetlabs-sqlserver

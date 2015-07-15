@@ -14,12 +14,18 @@ environment:
   - PUPPET_GEM_VERSION: <%= matrix['PUPPET_GEM_VERSION'] %>
     RUBY_VER: <%= matrix['RUBY_VER'] %>
 <% end -%>
+<% if @configs['matrix_extras'] -%>
+<%   @configs['matrix_extras'].each do |extra| -%>
+  - PUPPET_GEM_VERSION: <%= extra['PUPPET_GEM_VERSION'] %>
+    RUBY_VER: <%= extra['RUBY_VER'] %>
+<%   end -%>
+<% end -%>
 matrix:
   fast_finish: true
 install:
 - SET PATH=C:\Ruby%RUBY_VER%\bin;%PATH%
 - gem install bundler --quiet --no-ri --no-rdoc
-- bundle install --jobs 4 --retry 2 --without system_tests
+- <%= @configs['appveyor_bundle_install'] %>
 - type Gemfile.lock
 build: off
 test_script:

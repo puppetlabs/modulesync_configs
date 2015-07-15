@@ -1,7 +1,6 @@
 source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
-# Determines what type of gem is requested based
-# on place_or_version.
+# Determines what type of gem is requested based on place_or_version.
 def gem_type(place_or_version)
   if place_or_version =~ /^git:/
     :git
@@ -12,12 +11,10 @@ def gem_type(place_or_version)
   end
 end
 
-# Find a location or specific version for a gem.
-# place_or_version can be a version, which is most
-# often used. It can also be git, which is
-# specified as `git://somewhere.git#branch`. You
-# can also use a file source location, which is
-# specified as `file://some/location/on/disk`.
+# Find a location or specific version for a gem. place_or_version can be a
+# version, which is most often used. It can also be git, which is specified as
+# `git://somewhere.git#branch`. You can also use a file source location, which
+# is specified as `file://some/location/on/disk`.
 def location_for(place_or_version, fake_version = nil)
   if place_or_version =~ /^(git[:@][^#]*)#(.*)/
     [fake_version, { :git => $1, :branch => $2, :require => false }].compact
@@ -41,61 +38,55 @@ group <%= group %> do
 <%              'version' => gem['version'], -%>
 <%              'git'     => gem['git'], -%>
 <%              'branch'  => gem['branch'], -%>
-<%              'length'  => gem['gem'].length + (("', '".length if gem['version']) || 0) + gem['version'].to_s.length -%>
+<%              'platforms'  => gem['platforms'], -%>
+<%              'length'  => gem['gem'].length + (("', '".length if gem['version']) || 0) + gem['version'].to_s.length, -%>
+<%              'condition'      => gem['condition'] -%>
 <%            } -%>
 <%          end.map do |gem| -%>
 <%            gem['length'] -%>
 <%          end.max -%>
 <% gems.each do |gem| -%>
 <% if gem['gem'] == 'beaker-rspec' -%>
-  if beaker_version = ENV['BEAKER_VERSION']
-    gem 'beaker', *location_for(beaker_version)
-  end
   if beaker_rspec_version = ENV['BEAKER_RSPEC_VERSION']
     gem 'beaker-rspec', *location_for(beaker_rspec_version)
   else
     gem 'beaker-rspec',  :require => false
   end
+<% elsif gem['gem'] == 'beaker' -%>
+  gem 'beaker', *location_for(ENV['BEAKER_VERSION'] || '~> 2.18')
 <% else -%>
-  gem '<%= gem['gem'] %>'<%= ", '#{gem['version']}'" if gem['version'] %>, <%= ' ' * (maxlen - gem['length']) %> :require => false<%= ", :git => '#{gem['git']}'" if gem['git'] %><%= ", :branch => '#{gem['branch']}'" if gem['branch'] %>
+  gem '<%= gem['gem'] %>'<%= ", '#{gem['version']}'" if gem['version'] %>, <%= ' ' * (maxlen - gem['length']) %> :require => false<%= ", :git => '#{gem['git']}'" if gem['git'] %><%= ", :branch => '#{gem['branch']}'" if gem['branch'] %><%= ", :platforms => #{gem['platforms']}" if gem['platforms'] %><%= " if #{gem['condition']}" if gem['condition'] %>
 <% end -%>
 <% end -%>
 end
-
 <% end -%>
 
-# The recommendation is for PROJECT_GEM_VERSION,
-# there are older ways of referencing these. Add
-# them all for compatibility reasons. Remove
-# later when no issues are known
+# The recommendation is for PROJECT_GEM_VERSION, although there are older ways
+# of referencing these. Add them all for compatibility reasons. We'll remove
+# later when no issues are known. We'll prefer them in the right order.
 puppetversion = ENV['PUPPET_GEM_VERSION'] || ENV['GEM_PUPPET_VERSION'] || ENV['PUPPET_LOCATION'] || '>= 0'
 gem 'puppet', *location_for(puppetversion)
-puppet_gem_location = gem_type(puppetversion)
 
-if puppet_gem_location != :gem
-  gem "facter", *location_for(ENV['FACTER_GEM_VERSION'] || ENV['GEM_FACTER_VERSION'] || ENV['FACTER_LOCATION'] || '>= 0')
-  gem "hiera", *location_for(ENV['HIERA_GEM_VERSION'] || ENV['GEM_HIERA_VERSION'] || ENV['HIERA_LOCATION'] || '>= 0')
-end
+# Only explicitly specify Facter/Hiera if a version has been specified.
+# Otherwise it can lead to strange bundler behavior. If you are seeing weird
+# gem resolution behavior, try setting `DEBUG_RESOLVER` environment variable
+# to `1` and then run bundle install.
+facterversion = ENV['FACTER_GEM_VERSION'] || ENV['GEM_FACTER_VERSION'] || ENV['FACTER_LOCATION']
+gem "facter", *location_for(facterversion) if facterversion
+hieraversion = ENV['HIERA_GEM_VERSION'] || ENV['GEM_HIERA_VERSION'] || ENV['HIERA_LOCATION']
+gem "hiera", *location_for(hieraversion) if hieraversion
 
-# For Windows dependencies, these could be required
-# based on the version of Puppet you are requiring.
-# Anything greater than v3.5.0 is going to have
-# Windows-specific dependencies dictated by the gem
-# itself.
-# The other scenario is when you are faking out the
-# Puppet Gem to use a local file path / git path.
+<% if @configs['supports_windows'] -%>
+# For Windows dependencies, these could be required based on the version of
+# Puppet you are requiring. Anything greater than v3.5.0 is going to have
+# Windows-specific dependencies dictated by the gem itself. The other scenario
+# is when you are faking out Puppet to use a local file path / git path.
 explicitly_require_windows_gems = false
+puppet_gem_location = gem_type(puppetversion)
 # This is not a perfect answer to the version check
 if puppet_gem_location != :gem || puppetversion < '3.5.0'
-  is_x64 = Gem::Platform.local.cpu == 'x64'
-  if is_x64
-    platform(:x64_mingw) do
-      explicitly_require_windows_gems = true
-    end
-  else
-    platform (:mingw) do
-      explicitly_require_windows_gems = true
-    end
+  if Gem::Platform.local.os == 'mingw32'
+    explicitly_require_windows_gems = true
   end
 end
 
@@ -107,22 +98,17 @@ if explicitly_require_windows_gems
   gem "win32-security", "~> 0.1", :require => false
   gem "win32-service", "~> 0.7", :require => false
   gem "minitar", "~> 0.5.4", :require => false
+  gem "win32console", :require => false if RUBY_VERSION =~ /^1\./
 
-  if RUBY_VERSION =~ /^1\./ then
-    gem "win32console", :require => false
-  end
-
-  # Puppet less than 3.7.0 requires these
-  # granted anything over 3.5 won't make it in
-  # here anyway
-  if puppetversion < '3.7.0'
-    gem "sys-admin", "~> 1.5.6", :require => false
-    gem "win32-api", "~> 1.4.8", :require => false
-    gem "win32-taskscheduler", "~> 0.2", :require => false
-    gem "windows-api", "~> 0.4", :require => false
-    gem "windows-pr", "~> 1.2", :require => false
-  end
+  # Puppet less than 3.7.0 requires these.
+  # Puppet 3.5.0+ will control the actual requirements.
+  gem "sys-admin", "~> 1.5", :require => false
+  gem "win32-api", "~> 1.4.8", :require => false
+  gem "win32-taskscheduler", "~> 0.2", :require => false
+  gem "windows-api", "~> 0.4", :require => false
+  gem "windows-pr", "~> 1.2", :require => false
 end
+<% end -%>
 
 if File.exists? "#{__FILE__}.local"
   eval(File.read("#{__FILE__}.local"), binding)
