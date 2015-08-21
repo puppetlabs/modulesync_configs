@@ -49,7 +49,7 @@ group <%= group %> do
 <% if gem['gem'] == 'beaker-rspec' -%>
   gem 'beaker-rspec', *location_for(ENV['BEAKER_RSPEC_VERSION'] || '~> 5.1')
 <% elsif gem['gem'] == 'beaker' -%>
-  gem 'beaker', *location_for(ENV['BEAKER_VERSION'] || '~> 2.18')
+  gem 'beaker', *location_for(ENV['BEAKER_VERSION'] || '~> 2.20')
 <% else -%>
   gem '<%= gem['gem'] %>'<%= ", '#{gem['version']}'" if gem['version'] %>, <%= ' ' * (maxlen - gem['length']) %> :require => false<%= ", :git => '#{gem['git']}'" if gem['git'] %><%= ", :branch => '#{gem['branch']}'" if gem['branch'] %><%= ", :platforms => #{gem['platforms']}" if gem['platforms'] %><%= " if #{gem['condition']}" if gem['condition'] %>
 <% end -%>
