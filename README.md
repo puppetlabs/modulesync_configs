@@ -123,7 +123,7 @@ config_defaults.yml might look like:
 You can add additional environments for a specific module to test by adding an
 extras: section with the same format to the module's .sync.yml.
 
-**`moduleroot/spec/spec.opts`**
+**`moduleroot/.rspec`**
 
 Flat file containing some default rspec options.
 
