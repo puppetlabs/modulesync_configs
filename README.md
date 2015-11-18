@@ -100,6 +100,11 @@ extra_disabled_lint_checks.
 Contains some standard files to ignore. You can pass in additional files as an
 array with the key "paths" in your .gitignore section in .sync.yml.
 
+**`moduleroot/.gitattributes`**
+
+Contains some standard attributes (EOL style). You can pass in additional attributes as an
+array with the key "paths" in your .gitattributes section in .sync.yml.
+
 **`moduleroot/.travis.yml`**
 
 The TravisCI file is itself a YAML file with values defined in the YAML files
