@@ -26,6 +26,7 @@ Gemfile:
       - gem: beaker-rspec
       - gem: serverspec
       - gem: beaker-puppet_install_helper
+      - gem: master_manipulator
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
