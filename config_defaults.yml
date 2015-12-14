@@ -24,11 +24,6 @@ Gemfile:
       - gem: mocha
         version: '~>0.10.5'
       - gem: pry
-      - gem: pry-stack_explorer
-      - gem: pry-byebug
-        condition: "RUBY_VERSION >= '2.0'"
-      - gem: pry-debugger
-        condition: "RUBY_VERSION < '2.0'"
     ':system_tests':
       - gem: beaker-rspec
       - gem: beaker
