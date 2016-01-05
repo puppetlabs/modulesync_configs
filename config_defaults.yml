@@ -32,7 +32,7 @@ Gemfile:
       - gem: beaker-puppet_install_helper
       - gem: master_manipulator
       - gem: beaker-hostgenerator
-        version: '*location_for(ENV["BEAKER_VERSION"])'
+        version: '*location_for(ENV["BEAKER_HOSTGENERATOR_VERSION"])'
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
