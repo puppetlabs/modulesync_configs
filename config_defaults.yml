@@ -22,6 +22,7 @@ Gemfile:
       - gem: puppet_facts
       - gem: json
       - gem: metadata-json-lint
+      - gem: puppet-blacksmith
     ':system_tests':
       - gem: beaker-rspec
       - gem: serverspec
