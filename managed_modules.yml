@@ -8,6 +8,7 @@
 - puppetlabs-java
 - puppetlabs-java_ks
 - puppetlabs-mongodb
+- puppetlabs-motd
 - puppetlabs-mysql
 - puppetlabs-ntp
 - puppetlabs-postgresql
@@ -16,4 +17,3 @@
 - puppetlabs-tagmail
 - puppetlabs-tomcat
 - puppetlabs-vcsrepo
-- puppetlabs-motd
