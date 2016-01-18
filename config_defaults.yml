@@ -16,7 +16,6 @@ Gemfile:
   required:
     ':development, :unit_tests':
       - gem: rspec-core
-        version: '3.1.7'
       - gem: puppetlabs_spec_helper
       - gem: simplecov
       - gem: puppet_facts
