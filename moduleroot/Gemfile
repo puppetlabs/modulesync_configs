@@ -29,15 +29,7 @@ group <%= group %> do
 <%            gem['length'] -%>
 <%          end.max -%>
 <% gems.each do |gem| -%>
-<% if gem['gem'] == 'rspec-core' -%>
-  # rspec-core 3.1.7 is the last version to support ruby 1.8
-  if RUBY_VERSION < '1.9'
-    gem 'rspec-core', '3.1.7'
-  else
-    # newer version required to avoid BKR-537
-    gem 'rspec-core', '>= 3.4'
-  end
-<% elsif gem['gem'] == 'beaker-rspec' -%>
+<% if gem['gem'] == 'beaker-rspec' -%>
   if beaker_version = ENV['BEAKER_VERSION']
     gem 'beaker', *location_for(beaker_version)
   end
@@ -51,9 +43,7 @@ group <%= group %> do
 <% end -%>
 <% end -%>
 end
-
 <% end -%>
-
 
 if facterversion = ENV['FACTER_GEM_VERSION']
   gem 'facter', facterversion, :require => false
