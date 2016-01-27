@@ -18,6 +18,9 @@ Gemfile:
       - gem: puppet_facts
       - gem: puppet-blacksmith
       - gem: puppetlabs_spec_helper
+      # newer version required to PUP-5743
+      - gem: rspec-puppet
+        version: '>= 2.3.2'
       - gem: simplecov
     ':system_tests':
       - gem: beaker-puppet_install_helper
