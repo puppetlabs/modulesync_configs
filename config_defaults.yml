@@ -24,15 +24,16 @@ Gemfile:
       - gem: simplecov
     ':system_tests':
       - gem: beaker-rspec
-      # newer version required to avoid BKR-537
+        from_env: 'BEAKER_RSPEC_VERSION'
+        # newer version required to avoid BKR-537
         version: '>= 3.4'
       - gem: beaker
-        version: '*location_for(ENV["BEAKER_VERSION"])'
+        from_env: 'BEAKER_VERSION'
       - gem: serverspec
       - gem: beaker-puppet_install_helper
       - gem: master_manipulator
       - gem: beaker-hostgenerator
-        version: '*location_for(ENV["BEAKER_HOSTGENERATOR_VERSION"])'
+        from_env: 'BEAKER_HOSTGENERATOR_VERSION'
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
