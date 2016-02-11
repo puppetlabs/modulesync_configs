@@ -1,12 +1,14 @@
+# vim:ft=ruby
+
 source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
-def location_for(place, fake_version = nil)
+def location_for(place, version = nil)
   if place =~ /^(git[:@][^#]*)#(.*)/
-    [fake_version, { :git => $1, :branch => $2, :require => false }].compact
+    [version, { :git => $1, :branch => $2, :require => false}].compact
   elsif place =~ /^file:\/\/(.*)/
-    ['>= 0', { :path => File.expand_path($1), :require => false }]
+    ['>= 0', { :path => File.expand_path($1), :require => false}]
   else
-    [place, { :require => false }]
+    [place, version, { :require => false}].compact
   end
 end
 
@@ -19,42 +21,30 @@ end
 group <%= group %> do
 <% maxlen = gems.map! do |gem| -%>
 <%            { -%>
-<%              'gem'     => gem['gem'], -%>
-<%              'version' => gem['version'], -%>
-<%              'git'     => gem['git'], -%>
-<%              'branch'  => gem['branch'], -%>
-<%              'length'  => gem['gem'].length + (("', '".length if gem['version']) || 0) + gem['version'].to_s.length -%>
+<%              'gem'      => gem['gem'], -%>
+<%              'version'  => gem['version'], -%>
+<%              'git'      => gem['git'], -%>
+<%              'branch'   => gem['branch'], -%>
+<%              'from_env' => gem['from_env'], -%>
+<%              'length'   => gem['gem'].length + (("', '".length if gem['version']) || 0) + gem['version'].to_s.length -%>
 <%            } -%>
 <%          end.map do |gem| -%>
 <%            gem['length'] -%>
 <%          end.max -%>
 <% gems.each do |gem| -%>
-<% if gem['gem'] == 'beaker-rspec' -%>
-  if beaker_version = ENV['BEAKER_VERSION']
-    gem 'beaker', *location_for(beaker_version)
-  end
-  if beaker_rspec_version = ENV['BEAKER_RSPEC_VERSION']
-    gem 'beaker-rspec', *location_for(beaker_rspec_version)
-  else
-    gem 'beaker-rspec',  :require => false
-  end
-<% else -%>
+<%   if gem['from_env'] -%>
+  gem '<%= gem['gem'] -%>', <%= ' ' * (maxlen - gem['gem'].length) %> *location_for(ENV['<%= gem['from_env'] -%>']<%= gem['version'] ? " || '#{gem['version']}'" : "" -%>)
+<%   else -%>
   gem '<%= gem['gem'] %>'<%= ", '#{gem['version']}'" if gem['version'] %>, <%= ' ' * (maxlen - gem['length']) %> :require => false<%= ", :git => '#{gem['git']}'" if gem['git'] %><%= ", :branch => '#{gem['branch']}'" if gem['branch'] %>
-<% end -%>
+<%   end -%>
 <% end -%>
 end
 <% end -%>
 
-if facterversion = ENV['FACTER_GEM_VERSION']
-  gem 'facter', facterversion, :require => false
-else
-  gem 'facter', :require => false
-end
+gem 'facter', *location_for(ENV['FACTER_GEM_VERSION'])
+gem 'puppet', *location_for(ENV['PUPPET_GEM_VERSION'])
 
-if puppetversion = ENV['PUPPET_GEM_VERSION']
-  gem 'puppet', puppetversion, :require => false
-else
-  gem 'puppet', :require => false
-end
 
-# vim:ft=ruby
+if File.exists? "#{__FILE__}.local"
+  eval(File.read("#{__FILE__}.local"), binding)
+end
