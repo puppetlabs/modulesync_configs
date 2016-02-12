@@ -1,0 +1,7 @@
+---
+sudo: false
+language: ruby
+cache: bundler
+script: "bundle exec msync update --noop --git-base=https://github.com/"
+notifications:
+  email: false
