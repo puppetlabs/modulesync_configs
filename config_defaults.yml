@@ -23,6 +23,7 @@ Gemfile:
       - gem: puppet_facts
       - gem: mocha
         version: '~>0.10.5'
+      - gem: pry
     ':system_tests':
       - gem: beaker-rspec
       - gem: beaker
