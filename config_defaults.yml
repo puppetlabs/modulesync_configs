@@ -1,6 +1,6 @@
 ---
 .travis.yml:
-  script: "\"bundle exec rake validate lint spec\""
+  script: "\"bundle exec rake release_checks\""
   includes:
   - rvm: 2.1.6
     env: PUPPET_GEM_VERSION="~> 4.0" STRICT_VARIABLES="yes"
