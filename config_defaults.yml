@@ -16,7 +16,7 @@ Gemfile:
     ':development':
       - gem: rake
       - gem: rspec
-        version: '~>3.0.0'
+        version: '~>3.0'
       - gem: puppet-lint
       - gem: puppetlabs_spec_helper
         version: '~>0.10.3'
