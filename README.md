@@ -172,3 +172,7 @@ example,
 spec/acceptance/nodesets/sles-11sp1-x64.yml
   delete: true
 ```
+
+# Adding a new module
+
+To add a new module, append it to the `managed_modules.yml` file and create a PR for the change here. To avoid any surprises, your module should already be up-to-date with the current templates. To do so, run `[bundle exec] msync --noop -f <module name>` and commit and push the changes in `modules/<module name>` to your module. If you need to make local changes to this, add a `.sync.yml` as described above and rerun `msync` with `--offline` added. This will avoid blowing away the current checked out state. You can repeat this process as often as you need to get the module in an acceptable state.
