@@ -6,3 +6,4 @@
 - puppetlabs-reboot
 - puppetlabs-wsus_client
 - puppetlabs-sqlserver
+- puppetlabs-chocolatey
