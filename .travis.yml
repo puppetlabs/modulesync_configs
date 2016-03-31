@@ -1,0 +1,8 @@
+---
+sudo: false
+language: ruby
+cache: bundler
+# Run msync but in noop (Test Command).  Also, do not update the sqlserver module (regex escaped for bash and then escaped for yaml)
+script: "bundle exec msync update --noop --git-base=https://github.com/ -f \\^\\(\\(\\?\\!-sqlserver\\).\\)\\*\\$"
+notifications:
+  email: false
