@@ -1,6 +1,6 @@
 ---
 .travis.yml:
-  script: "\"bundle exec rake validate lint spec\""
+  script: "\"bundle exec rake validate lint parallel_spec\""
   includes:
   - rvm: 2.1.6
     env: PUPPET_GEM_VERSION="~> 4.0" STRICT_VARIABLES="yes"
@@ -22,6 +22,7 @@ Gemfile:
       - gem: rspec-puppet
         version: '>= 2.3.2'
       - gem: simplecov
+      - gem: parallel_tests
     ':system_tests':
       - gem: beaker-rspec
         from_env: 'BEAKER_RSPEC_VERSION'
@@ -41,3 +42,5 @@ Rakefile:
   - 'disable_class_inherits_from_params_class'
   - 'disable_documentation'
   - 'disable_single_quote_string_with_variables'
+spec/spec.opts:
+  delete: true
