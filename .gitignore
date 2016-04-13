@@ -1,2 +1,4 @@
-modules/
-modulesync.yml
+/modules/
+/modulesync.yml
+/.bundle/
+/Gemfile.lock
