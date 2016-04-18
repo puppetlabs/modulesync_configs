@@ -3,26 +3,44 @@
 sudo: false
 language: ruby
 cache: bundler
-bundler_args: --without system_tests
 script: <%= @configs['script'] %>
 matrix:
   fast_finish: true
   include:
-<% @configs['includes'].each do |include| -%>
-  - rvm: <%= include['rvm'] %>
-    env: <%= include['env'] %>
+<% if @configs['docker_sets'] -%>
+<%   @configs['docker_sets'].each do |set| -%>
+<%     job = @configs['docker_defaults'].merge(set['options'] || {}) -%>
+  - rvm: <%= job['rvm'] %>
+<%     job.keys.sort.each do |k| -%>
+<%     next if k == 'rvm' -%>
+    <%= k %>: <%= job[k].gsub(/@@SET@@/, set['set']) %>
+<%     end -%>
+<%   end -%>
+<% end -%>
+<% @configs['includes'].each do |job| -%>
+  - rvm: <%= job['rvm'] %>
+<%   job.keys.sort.each do |k| -%>
+<%     next if k == 'rvm' -%>
+    <%= k %>: <%= job[k] %>
+<%   end -%>
 <% end -%>
 <% if @configs['extras'] -%>
-<%   @configs['extras'].each do |extra| -%>
-  - rvm: <%= extra['rvm'] %>
-    env: <%= extra['env'] %>
+<%   @configs['extras'].each do |job| -%>
+  - rvm: <%= job['rvm'] %>
+<%     job.keys.sort.each do |k| -%>
+<%       next if k == 'rvm' -%>
+    <%= k %>: <%= job[k] %>
+<%     end -%>
 <%   end -%>
 <% end -%>
 <% if @configs['allow_failures'] -%>
-<%   @configs['allow_failures'].each do |allow_failures| -%>
   allow_failures:
-    - rvm: <%= allow_failures['rvm'] %>
-      env: <%= allow_failures['env'] %>
+<%   @configs['allow_failures'].each do |job| -%>
+    - rvm: <%= job['rvm'] %>
+<%     job.keys.sort.each do |k| -%>
+<%       next if k == 'rvm' -%>
+      <%= k %>: <%= job[k] %>
+<%     end -%>
 <%   end -%>
 <% end -%>
 notifications:

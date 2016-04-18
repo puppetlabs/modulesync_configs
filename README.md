@@ -128,6 +128,8 @@ config_defaults.yml might look like:
 You can add additional environments for a specific module to test by adding an
 extras: section with the same format to the module's .sync.yml.
 
+By setting the `docker_sets`, the .travis.yml file sets up full-system tests running in a docker container. `docker_defaults` allows you to specify or replace global defaults. Use the `options` entry on a docker set, to override individual options.
+
 **`moduleroot/.rspec`**
 
 Flat file containing recommended default rspec options.
