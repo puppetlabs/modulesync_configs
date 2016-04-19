@@ -15,5 +15,7 @@
 - puppetlabs-rabbitmq
 - puppetlabs-stdlib
 - puppetlabs-tagmail
+- puppetlabs-tftp
 - puppetlabs-tomcat
 - puppetlabs-vcsrepo
+- puppetlabs-xinetd
