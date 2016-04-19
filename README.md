@@ -100,6 +100,11 @@ extra_disabled_lint_checks.
 Contains some standard files to ignore. You can pass in additional files as an
 array with the key "paths" in your .gitignore section in .sync.yml.
 
+**`moduleroot/.gitattributes`**
+
+Contains some standard attributes (EOL style). You can pass in additional attributes as an
+array with the key "paths" in your .gitattributes section in .sync.yml.
+
 **`moduleroot/.travis.yml`**
 
 The TravisCI file is itself a YAML file with values defined in the YAML files
@@ -123,9 +128,11 @@ config_defaults.yml might look like:
 You can add additional environments for a specific module to test by adding an
 extras: section with the same format to the module's .sync.yml.
 
-**`moduleroot/spec/spec.opts`**
+By setting the `docker_sets`, the .travis.yml file sets up full-system tests running in a docker container. `docker_defaults` allows you to specify or replace global defaults. Use the `options` entry on a docker set, to override individual options.
 
-Flat file containing some default rspec options.
+**`moduleroot/.rspec`**
+
+Flat file containing recommended default rspec options.
 
 **`moduleroot/spec/spec_helper.rb`**
 
@@ -167,3 +174,7 @@ example,
 spec/acceptance/nodesets/sles-11sp1-x64.yml
   delete: true
 ```
+
+# Adding a new module
+
+To add a new module, append it to the `managed_modules.yml` file and create a PR for the change here. To avoid any surprises, your module should already be up-to-date with the current templates. To do so, run `[bundle exec] msync --noop -f <module name>` and commit and push the changes in `modules/<module name>` to your module. If you need to make local changes to this, add a `.sync.yml` as described above and rerun `msync` with `--offline` added. This will avoid blowing away the current checked out state. You can repeat this process as often as you need to get the module in an acceptable state.
