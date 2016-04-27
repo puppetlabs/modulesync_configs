@@ -1,8 +1,8 @@
-modules/
-modulesync.yml
-Gemfile.lock
-.bundle/
-.idea/
+/modules/
+/modulesync.yml
+/Gemfile.lock
+/.bundle/
+/.idea/
 .metadata
 *.iml
 .*.sw[op]
