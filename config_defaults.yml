@@ -56,3 +56,7 @@ Rakefile:
   - 'disable_class_inherits_from_params_class'
   - 'disable_documentation'
   - 'disable_single_quote_string_with_variables'
+MAINTAINERS.md:
+  maintainers:
+    - "Puppet Forge Modules Team `forge-modules |at| puppet |dot| com`"
+    
