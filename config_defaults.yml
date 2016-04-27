@@ -41,6 +41,9 @@ appveyor.yml:
       RUBY_VER: 21-x64
   test_script:
   - "bundle exec rake spec SPEC_OPTS='--format documentation'"
+MAINTAINERS.md:
+  maintainers:
+    - "Puppet Forge Modules Team `forge-modules |at| puppet |dot| com`"
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
