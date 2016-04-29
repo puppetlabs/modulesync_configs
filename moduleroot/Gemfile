@@ -46,13 +46,14 @@ end
 group <%= group %> do
 <% maxlen = gems.map! do |gem| -%>
 <%            { -%>
-<%              'gem'     => gem['gem'], -%>
-<%              'version' => gem['version'], -%>
-<%              'git'     => gem['git'], -%>
-<%              'branch'  => gem['branch'], -%>
-<%              'platforms'  => gem['platforms'], -%>
-<%              'length'  => gem['gem'].length + (("', '".length if gem['version']) || 0) + gem['version'].to_s.length, -%>
-<%              'condition'      => gem['condition'] -%>
+<%              'gem'       => gem['gem'], -%>
+<%              'version'   => gem['version'], -%>
+<%              'git'       => gem['git'], -%>
+<%              'branch'    => gem['branch'], -%>
+<%              'ref'       => gem['ref'], -%>
+<%              'platforms' => gem['platforms'], -%>
+<%              'length'    => gem['gem'].length + (("', '".length if gem['version']) || 0) + gem['version'].to_s.length, -%>
+<%              'condition' => gem['condition'] -%>
 <%            } -%>
 <%          end.map do |gem| -%>
 <%            gem['length'] -%>
@@ -63,7 +64,7 @@ group <%= group %> do
 <% elsif gem['gem'] == 'beaker' -%>
   gem 'beaker', *location_for(ENV['BEAKER_VERSION'] || '~> 2.20')
 <% else -%>
-  gem '<%= gem['gem'] %>'<%= ", '#{gem['version']}'" if gem['version'] %>, <%= ' ' * (maxlen - gem['length']) %> :require => false<%= ", :git => '#{gem['git']}'" if gem['git'] %><%= ", :branch => '#{gem['branch']}'" if gem['branch'] %><%= ", :platforms => #{gem['platforms']}" if gem['platforms'] %><%= " if #{gem['condition']}" if gem['condition'] %>
+  gem '<%= gem['gem'] %>'<%= ", '#{gem['version']}'" if gem['version'] %>, <%= ' ' * (maxlen - gem['length']) %> :require => false<%= ", :git => '#{gem['git']}'" if gem['git'] %><%= ", :branch => '#{gem['branch']}'" if gem['branch'] %><%= ", :ref => '#{gem['ref']}'" if gem['ref'] %><%= ", :platforms => #{gem['platforms']}" if gem['platforms'] %><%= " if #{gem['condition']}" if gem['condition'] %>
 <% end -%>
 <% end -%>
 end
