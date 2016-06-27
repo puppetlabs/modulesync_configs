@@ -7,7 +7,7 @@ PuppetLint.configuration.fail_on_warnings = true
 <% checks.each do |check| -%>
 PuppetLint.configuration.send('<%= check %>')
 <% end -%>
-PuppetLint.configuration.ignore_paths = ["spec/**/*.pp", "pkg/**/*.pp"]
+PuppetLint.configuration.ignore_paths = ["spec/**/*.pp", "pkg/**/*.pp", "bundle/**/*", "vendor/**/*"]
 
 desc 'Generate pooler nodesets'
 task :gen_nodeset do
