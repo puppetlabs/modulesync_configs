@@ -52,7 +52,7 @@ Gemfile:
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
-  - 'disable_char_check'
+  - 'disable_140chars'
   - 'disable_class_inherits_from_params_class'
   - 'disable_documentation'
   - 'disable_single_quote_string_with_variables'
