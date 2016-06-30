@@ -1,6 +1,7 @@
 ---
 - puppetlabs-acl
 - puppetlabs-dsc
+- puppetlabs-dism
 - puppetlabs-powershell
 - puppetlabs-registry
 - puppetlabs-reboot
