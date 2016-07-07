@@ -153,7 +153,7 @@ else
     # If we're using a Puppet gem on windows, which handles its own win32-xxx gem dependencies (Pup 3.5.0 and above), set maximum versions
     # ffi is pinned due to PUP-6473.
     # Can be removed once https://github.com/ffi/ffi/issues/506 is resolved  
-    gem "ffi", "<= 1.9.10",             :require => false
+    gem "ffi", "~> 1.9.6", "<= 1.9.10", :require => false
     # Required due to PUP-6445
     gem "win32-dir", "<= 0.4.9",        :require => false
     gem "win32-eventlog", "<= 0.6.5",   :require => false
