@@ -31,12 +31,15 @@ Gemfile:
       - gem: json
       - gem: metadata-json-lint
       - gem: puppet_facts
-      - gem: puppet-blacksmith
       - gem: puppetlabs_spec_helper
       # newer version required to PUP-5743
       - gem: rspec-puppet
         version: '>= 2.3.2'
       - gem: simplecov
+      - gem: puppet-blacksmith
+      # required by puppet-blacksmith
+      - gem: rest-client
+        version: '~> 1.8.0' # for ruby 1.9 compatibility
     ':system_tests':
       - gem: beaker-rspec
         from_env: 'BEAKER_RSPEC_VERSION'
