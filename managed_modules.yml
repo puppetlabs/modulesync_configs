@@ -1,4 +1,5 @@
 ---
+- puppetlabs-accounts
 - puppetlabs-apache
 - puppetlabs-apt
 - puppetlabs-concat
