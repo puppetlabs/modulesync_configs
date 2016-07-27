@@ -28,7 +28,6 @@
 Gemfile:
   required:
     ':development, :unit_tests':
-      - gem: json
       - gem: metadata-json-lint
       - gem: puppet_facts
       # newer version required for ruby 1.9 compat
