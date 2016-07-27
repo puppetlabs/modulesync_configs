@@ -28,12 +28,14 @@
 Gemfile:
   required:
     ':development, :unit_tests':
-      - gem: json
       - gem: metadata-json-lint
       - gem: puppet_facts
       # newer version required for ruby 1.9 compat
       - gem: puppet-blacksmith
         version: '>= 3.4.0'
+      # older version required for ruby 1.9 compat, as it is pulled in as dependency of puppet, this has to be carried by the module
+      - gem: json_pure
+        version: '<= 2.0.1'
       - gem: puppetlabs_spec_helper
       # newer version required to PUP-5743
       - gem: rspec-puppet
