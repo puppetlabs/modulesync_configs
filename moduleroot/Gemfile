@@ -46,6 +46,7 @@ end
 gem 'json_pure', '<=2.0.1', :require => false if RUBY_VERSION =~ /^1\./
 # rubocop 0.42.0 requires ruby >=2
 gem 'rubocop', '0.41.2', :require => false if RUBY_VERSION =~ /^1\./
+gem 'rubocop-rspec', '~> 1.6', :require => false if RUBY_VERSION >= '2.3.0'
 
 gem 'facter', *location_for(ENV['FACTER_GEM_VERSION'])
 gem 'puppet', *location_for(ENV['PUPPET_GEM_VERSION'])
