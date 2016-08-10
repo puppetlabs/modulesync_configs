@@ -37,6 +37,7 @@ Gemfile:
       # newer version required to PUP-5743
       - gem: rspec-puppet
         version: '>= 2.3.2'
+      - gem: rspec-puppet-facts
       - gem: simplecov
     ':system_tests':
       - gem: beaker-rspec
