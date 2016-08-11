@@ -5,6 +5,7 @@
 - puppetlabs-concat
 - puppetlabs-firewall
 - puppetlabs-haproxy
+- puppetlabs-ibm_installation_manager
 - puppetlabs-inifile
 - puppetlabs-java
 - puppetlabs-java_ks
