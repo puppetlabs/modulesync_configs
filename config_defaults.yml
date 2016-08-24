@@ -6,7 +6,7 @@
     env: PUPPET_GEM_VERSION="~> 3.0"
   - rvm: 2.0.0
     env: PUPPET_GEM_VERSION="~> 3.0"
-  - rvm: 2.1.5
+  - rvm: 2.3.1
     env: PUPPET_GEM_VERSION="~> 4.0"
   - rvm: 2.0.0
     env: PUPPET_GEM_VERSION="~> 3.0" FUTURE_PARSER="yes"
@@ -36,9 +36,9 @@ appveyor.yml:
     - PUPPET_GEM_VERSION: '~> 3.0'
       RUBY_VER: 200-x64
     - PUPPET_GEM_VERSION: '~> 4.0'
-      RUBY_VER: 21
+      RUBY_VER: 23
     - PUPPET_GEM_VERSION: '~> 4.0'
-      RUBY_VER: 21-x64
+      RUBY_VER: 23-x64
   test_script:
   - "bundle exec rake spec SPEC_OPTS='--format documentation'"
 
