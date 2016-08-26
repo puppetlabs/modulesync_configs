@@ -2,16 +2,41 @@
 
 source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
-def location_for(place, version = nil)
-  if place =~ /^((?:git|https?)[:@][^#]*)#(.*)/
-    [version, { :git => $1, :branch => $2, :require => false }].compact
-  elsif place =~ /^file:\/\/(.*)/
-    ['>= 0', { :path => File.expand_path($1), :require => false }]
+def location_from_env(env, default_location = [])
+  if location = ENV[env]
+    if location =~ /^((?:git|https?)[:@][^#]*)#(.*)/
+      [{ :git => $1, :branch => $2, :require => false }]
+    elsif location =~ /^file:\/\/(.*)/
+      ['>= 0', { :path => File.expand_path($1), :require => false }]
+    else
+      [location, { :require => false }]
+    end
   else
-    [place, version, { :require => false }].compact
+    default_location
   end
 end
 
+<%
+def build_location(gem)
+  tags = []
+  tags << "'#{gem['version']}'" if gem['version']
+  tags << ":git => '#{gem['git']}'" if gem['git']
+  tags << ":branch => '#{gem['branch']}'" if gem['branch']
+  tags << ":platforms => #{gem['platforms']}" if gem['platforms']
+  ruby_expr = if (gem['ruby-operator'] && gem['ruby-version'])
+                " if RUBY_VERSION #{gem['ruby-operator']} '#{gem['ruby-version']}'"
+              else
+                nil
+              end
+  if gem['from_env']
+    ", *location_from_env('#{gem['from_env']}', [#{tags.join(", ")}])#{ruby_expr}"
+  elsif tags.length > 0
+    ", #{tags.join(", ")}#{ruby_expr}"
+  else
+    ruby_expr
+  end
+end
+-%>
 <% groups = {} -%>
 <% (@configs['required'].keys + ((@configs['optional'] || {}).keys)).uniq.each do |key| -%>
 <%   groups[key] = (@configs['required'][key] || []) + ((@configs['optional'] || {})[key] || []) -%>
@@ -19,37 +44,14 @@ end
 <% -%>
 <% groups.each do |group, gems| -%>
 group <%= group %> do
-<% maxlen = gems.map! do |gem| -%>
-<%            { -%>
-<%              'gem'      => gem['gem'], -%>
-<%              'version'  => gem['version'], -%>
-<%              'git'      => gem['git'], -%>
-<%              'branch'   => gem['branch'], -%>
-<%              'from_env' => gem['from_env'], -%>
-<%              'length'   => gem['gem'].length + (("', '".length if gem['version']) || 0) + gem['version'].to_s.length -%>
-<%            } -%>
-<%          end.map do |gem| -%>
-<%            gem['length'] -%>
-<%          end.max -%>
-<% gems.each do |gem| -%>
-<%   if gem['from_env'] -%>
-  gem '<%= gem['gem'] -%>', <%= ' ' * (maxlen - gem['gem'].length) %> *location_for(ENV['<%= gem['from_env'] -%>']<%= gem['version'] ? " || '#{gem['version']}'" : "" -%>)
-<%   else -%>
-  gem '<%= gem['gem'] %>'<%= ", '#{gem['version']}'" if gem['version'] %>, <%= ' ' * (maxlen - gem['length']) %> :require => false<%= ", :git => '#{gem['git']}'" if gem['git'] %><%= ", :branch => '#{gem['branch']}'" if gem['branch'] %>
-<%   end -%>
-<% end -%>
+<%  gems.each do |gem| -%>
+  gem '<%= gem['gem'] %>'<%= build_location(gem) %>
+<%  end -%>
 end
 <% end -%>
 
-# json_pure 2.0.2 added a requirement on ruby >= 2. We pin to json_pure 2.0.1
-# if using ruby 1.x
-gem 'json_pure', '<=2.0.1', :require => false if RUBY_VERSION =~ /^1\./
-# rubocop 0.42.0 requires ruby >=2
-gem 'rubocop', '0.41.2', :require => false if RUBY_VERSION =~ /^1\./
-gem 'rubocop-rspec', '~> 1.6', :require => false if RUBY_VERSION >= '2.3.0'
-
-gem 'facter', *location_for(ENV['FACTER_GEM_VERSION'])
-gem 'puppet', *location_for(ENV['PUPPET_GEM_VERSION'])
+gem 'facter', *location_from_env('FACTER_GEM_VERSION')
+gem 'puppet', *location_from_env('PUPPET_GEM_VERSION')
 
 if File.exists? "#{__FILE__}.local"
   eval(File.read("#{__FILE__}.local"), binding)

@@ -44,13 +44,35 @@ Gemfile:
       - gem: rspec-puppet-facts
       - gem: simplecov
       - gem: parallel_tests
+      - gem: rubocop
+        version: '0.41.2'
+        ruby-operator: '<'
+        ruby-version: '2.0.0'
+      - gem: rubocop
+        ruby-operator: '>='
+        ruby-version: '2.0.0'
+      - gem: rubocop-rspec
+        version: '~> 1.6'
+        ruby-operator: '>='
+        ruby-version: '2.3.0'
+      - gem: json_pure
+        version: '<= 2.0.1'
+        ruby-operator: '<'
+        ruby-version: '2.0.0'
     ':system_tests':
+      - gem: beaker
+        from_env: 'BEAKER_VERSION'
+        ruby-operator: '>='
+        ruby-version: '2.3.0'
+      - gem: beaker
+        from_env: 'BEAKER_VERSION'
+        version: '< 3'
+        ruby-operator: '<'
+        ruby-version: '2.3.0'
       - gem: beaker-rspec
         from_env: 'BEAKER_RSPEC_VERSION'
         # newer version required to avoid BKR-537
         version: '>= 3.4'
-      - gem: beaker
-        from_env: 'BEAKER_VERSION'
       - gem: serverspec
       - gem: beaker-puppet_install_helper
       - gem: master_manipulator
