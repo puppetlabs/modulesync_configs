@@ -84,7 +84,8 @@ Gemfile:
 The template also looks in .sync.yml for a group of optional gems to install,
 and merges this list with the list found in config_defaults.yml. This section
 of .sync.yml will look the same as the section of config_defaults.yml, but the
-name will be "optional" rather than "required".
+name will be "optional" rather than "required". See the Gemfile template for
+the list of supported selectors.
 
 **`moduleroot/Rakefile`**
 

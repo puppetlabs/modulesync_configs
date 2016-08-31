@@ -6,15 +6,18 @@
   - set: docker/centos-7
   docker_defaults:
     # values will replace @@SET@@ with the docker_sets' value
-    rvm: 2.1.6
+    rvm: 2.3.1
     sudo: required
     dist: trusty
     services: docker
     env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_set=@@SET@@
     script: bundle exec rake beaker
   includes:
+  - rvm: 2.3.1
+    env: PUPPET_GEM_VERSION="~> 4.0"
+    bundler_args: --without system_tests
   - rvm: 2.1.9
-    env: PUPPET_GEM_VERSION="~> 4.0" STRICT_VARIABLES="yes"
+    env: PUPPET_GEM_VERSION="~> 4.0"
     bundler_args: --without system_tests
   - rvm: 2.1.5
     env: PUPPET_GEM_VERSION="~> 3.0" FUTURE_PARSER="yes"
@@ -34,18 +37,42 @@ Gemfile:
       - gem: puppet-blacksmith
         version: '>= 3.4.0'
       - gem: puppetlabs_spec_helper
+        version: '>= 1.2.1'
       # newer version required to PUP-5743
       - gem: rspec-puppet
         version: '>= 2.3.2'
       - gem: rspec-puppet-facts
       - gem: simplecov
+      - gem: parallel_tests
+      - gem: rubocop
+        version: '0.41.2'
+        ruby-operator: '<'
+        ruby-version: '2.0.0'
+      - gem: rubocop
+        ruby-operator: '>='
+        ruby-version: '2.0.0'
+      - gem: rubocop-rspec
+        version: '~> 1.6'
+        ruby-operator: '>='
+        ruby-version: '2.3.0'
+      - gem: json_pure
+        version: '<= 2.0.1'
+        ruby-operator: '<'
+        ruby-version: '2.0.0'
     ':system_tests':
+      - gem: beaker
+        from_env: 'BEAKER_VERSION'
+        ruby-operator: '>='
+        ruby-version: '2.3.0'
+      - gem: beaker
+        from_env: 'BEAKER_VERSION'
+        version: '< 3'
+        ruby-operator: '<'
+        ruby-version: '2.3.0'
       - gem: beaker-rspec
         from_env: 'BEAKER_RSPEC_VERSION'
         # newer version required to avoid BKR-537
         version: '>= 3.4'
-      - gem: beaker
-        from_env: 'BEAKER_VERSION'
       - gem: serverspec
       - gem: beaker-puppet_install_helper
       - gem: master_manipulator
@@ -54,7 +81,5 @@ Gemfile:
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
-  - 'disable_140chars'
-  - 'disable_class_inherits_from_params_class'
   - 'disable_documentation'
   - 'disable_single_quote_string_with_variables'
