@@ -28,6 +28,7 @@
   - rvm: 1.9.3
     env: PUPPET_GEM_VERSION="~> 3.0"
     bundler_args: --without system_tests
+
 Gemfile:
   required:
     ':development, :unit_tests':
@@ -78,6 +79,13 @@ Gemfile:
       - gem: master_manipulator
       - gem: beaker-hostgenerator
         from_env: 'BEAKER_HOSTGENERATOR_VERSION'
+
+MAINTAINERS:
+  maintainers:
+    - github: puppetlabs
+      email: "discuss-modules@puppet.com"
+      name: "Modules Team"
+
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
