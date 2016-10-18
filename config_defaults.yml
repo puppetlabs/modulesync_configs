@@ -29,13 +29,25 @@
     env: PUPPET_GEM_VERSION="~> 3.0"
     bundler_args: --without system_tests
 Gemfile:
+  supports_windows:
+    - puppetlabs-acl
+    - puppetlabs-chocolatey
+    - puppetlabs-dism
+    - puppetlabs-dsc
+    - puppetlabs-powershell
+    - puppetlabs-reboot
+    - puppetlabs-registry
+    - puppetlabs-sqlserver
+    - puppetlabs-wsus_client
   required:
-    ':development, :unit_tests':
+    ':development':
+      - gem: puppet-lint
       - gem: metadata-json-lint
       - gem: puppet_facts
       # newer version required for ruby 1.9 compat
       - gem: puppet-blacksmith
         version: '>= 3.4.0'
+        platforms: 'ruby'
       - gem: puppetlabs_spec_helper
         version: '>= 1.2.1'
       # newer version required to PUP-5743
@@ -48,45 +60,48 @@ Gemfile:
       - gem: simplecov
       - gem: parallel_tests
         version: '< 2.10.0'
-        ruby-operator: '<'
-        ruby-version: '2.0.0'
+        condition: "Gem::Version.new(RUBY_VERSION) < Gem::Version.new('2.0.0')"
       - gem: parallel_tests
-        ruby-operator: '>='
-        ruby-version: '2.0.0'
+        condition: "Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.0.0')"
       - gem: rubocop
         version: '0.41.2'
-        ruby-operator: '<'
-        ruby-version: '2.0.0'
+        condition: "Gem::Version.new(RUBY_VERSION) < Gem::Version.new('2.0.0')"
       - gem: rubocop
-        ruby-operator: '>='
-        ruby-version: '2.0.0'
+        condition: "Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.0.0')"
       - gem: rubocop-rspec
         version: '~> 1.6'
-        ruby-operator: '>='
-        ruby-version: '2.3.0'
+        condition: "Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.3.0')"
+      - gem: pry
+      # json_pure 2.0.2 added a requirement on ruby >= 2. We pin to json_pure <= 2.0.1
+      # if using ruby 1.x
       - gem: json_pure
         version: '<= 2.0.1'
-        ruby-operator: '<'
-        ruby-version: '2.0.0'
+        condition: "Gem::Version.new(RUBY_VERSION) < Gem::Version.new('2.0.0')"
     ':system_tests':
       - gem: beaker
         from_env: 'BEAKER_VERSION'
-        ruby-operator: '>='
-        ruby-version: '2.3.0'
+        version: '~> 2.20'
+        condition: "supports_windows"
+      - gem: beaker
+        from_env: 'BEAKER_VERSION'
+        condition: "Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.3.0') and ! supports_windows"
       - gem: beaker
         from_env: 'BEAKER_VERSION'
         version: '< 3'
-        ruby-operator: '<'
-        ruby-version: '2.3.0'
+        condition: "Gem::Version.new(RUBY_VERSION) < Gem::Version.new('2.3.0') and ! supports_windows"
       # beaker 3 requires this for PE installs
       - gem: beaker-pe
-        ruby-operator: '>='
-        ruby-version: '2.3.0'
+        condition: "Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.3.0')"
       - gem: beaker-rspec
         from_env: 'BEAKER_RSPEC_VERSION'
         # newer version required to avoid BKR-537
         version: '>= 3.4'
-      - gem: serverspec
+        condition: "! supports_windows"
+      - gem: beaker-rspec
+        from_env: 'BEAKER_RSPEC_VERSION'
+        # newer version required to avoid BKR-537
+        version: '~> 5.1'
+        condition: "supports_windows"
       - gem: beaker-puppet_install_helper
       - gem: master_manipulator
       - gem: beaker-hostgenerator
