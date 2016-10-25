@@ -69,6 +69,10 @@ Gemfile:
         version: '< 3'
         ruby-operator: '<'
         ruby-version: '2.3.0'
+      # beaker 3 requires this for PE installs
+      - gem: beaker-pe
+        ruby-operator: '>='
+        ruby-version: '2.3.0'
       - gem: beaker-rspec
         from_env: 'BEAKER_RSPEC_VERSION'
         # newer version required to avoid BKR-537
