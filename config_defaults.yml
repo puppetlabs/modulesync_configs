@@ -42,8 +42,17 @@ Gemfile:
       - gem: rspec-puppet
         version: '>= 2.3.2'
       - gem: rspec-puppet-facts
+      # the newly released mocha 1.2.0 causes hangs during spec testing. See MODULES-3958 for a long-term solution
+      - gem: mocha
+        version: '< 1.2.0'
       - gem: simplecov
       - gem: parallel_tests
+        version: '< 2.10.0'
+        ruby-operator: '<'
+        ruby-version: '2.0.0'
+      - gem: parallel_tests
+        ruby-operator: '>='
+        ruby-version: '2.0.0'
       - gem: rubocop
         version: '0.41.2'
         ruby-operator: '<'
