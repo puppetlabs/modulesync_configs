@@ -3,6 +3,6 @@ sudo: false
 language: ruby
 rvm: 2.3.1
 cache: bundler
-script: "bundle exec msync update --noop --git-base=https://github.com/"
+script: "bundle exec msync update --noop --git-base=https://github.com/ -x puppetlabs-websphere_application_server"
 notifications:
   email: false
