@@ -17,6 +17,7 @@
 - puppetlabs-postgresql
 - puppetlabs-rabbitmq
 - puppetlabs-stdlib
+- puppetlabs-satellite_pe_tools
 - puppetlabs-tagmail
 - puppetlabs-tftp
 - puppetlabs-tomcat
