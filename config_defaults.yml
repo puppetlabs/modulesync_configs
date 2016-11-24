@@ -106,6 +106,9 @@ Gemfile:
       - gem: master_manipulator
       - gem: beaker-hostgenerator
         from_env: 'BEAKER_HOSTGENERATOR_VERSION'
+      - gem: beaker-abs
+        from_env: 'BEAKER_ABS_VERSION'
+        version: '~> 0.1'
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
