@@ -12,7 +12,6 @@ coverage/
 *.iml
 .*.sw[op]
 .DS_Store
-.rspec
 tmp/
 
 <% if ! @configs['paths'].nil? -%>
