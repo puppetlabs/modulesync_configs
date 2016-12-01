@@ -1,6 +1,6 @@
 ---
 .travis.yml:
-  script: "\"bundle exec rake validate lint spec\""
+  script: "\"bundle exec rake release_checks\""
   docker_sets:
   - set: docker/ubuntu-14.04
   - set: docker/centos-7
