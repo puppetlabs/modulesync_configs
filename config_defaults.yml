@@ -42,7 +42,9 @@ Gemfile:
   required:
     ':development':
       - gem: puppet-lint
+      # Only non-windows because it needs json
       - gem: metadata-json-lint
+        platforms: 'ruby'
       - gem: puppet_facts
       # newer version required for ruby 1.9 compat
       - gem: puppet-blacksmith
@@ -53,30 +55,34 @@ Gemfile:
       # newer version required to PUP-5743
       - gem: rspec-puppet
         version: '>= 2.3.2'
+      # Only non-windows because it needs json
       - gem: rspec-puppet-facts
+        platforms: 'ruby'
       # the newly released mocha 1.2.0 causes hangs during spec testing. See MODULES-3958 for a long-term solution
       - gem: mocha
         version: '< 1.2.0'
+      # Only non-windows because it needs json
       - gem: simplecov
+        platforms: 'ruby'
       - gem: parallel_tests
         version: '< 2.10.0'
-        condition: "Gem::Version.new(RUBY_VERSION) < Gem::Version.new('2.0.0')"
+        condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.0.0')"
       - gem: parallel_tests
-        condition: "Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.0.0')"
+        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.0.0')"
       - gem: rubocop
         version: '0.41.2'
-        condition: "Gem::Version.new(RUBY_VERSION) < Gem::Version.new('2.0.0')"
+        condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.0.0')"
       - gem: rubocop
-        condition: "Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.0.0')"
+        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.0.0')"
       - gem: rubocop-rspec
         version: '~> 1.6'
-        condition: "Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.3.0')"
+        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
       - gem: pry
       # json_pure 2.0.2 added a requirement on ruby >= 2. We pin to json_pure <= 2.0.1
       # if using ruby 1.x
       - gem: json_pure
         version: '<= 2.0.1'
-        condition: "Gem::Version.new(RUBY_VERSION) < Gem::Version.new('2.0.0')"
+        condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.0.0')"
     ':system_tests':
       - gem: beaker
         from_env: 'BEAKER_VERSION'
@@ -84,14 +90,14 @@ Gemfile:
         condition: "supports_windows"
       - gem: beaker
         from_env: 'BEAKER_VERSION'
-        condition: "Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.3.0') and ! supports_windows"
+        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0') and ! supports_windows"
       - gem: beaker
         from_env: 'BEAKER_VERSION'
         version: '< 3'
-        condition: "Gem::Version.new(RUBY_VERSION) < Gem::Version.new('2.3.0') and ! supports_windows"
+        condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.3.0') and ! supports_windows"
       # beaker 3 requires this for PE installs
       - gem: beaker-pe
-        condition: "Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.3.0')"
+        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
       - gem: beaker-rspec
         from_env: 'BEAKER_RSPEC_VERSION'
         # newer version required to avoid BKR-537
