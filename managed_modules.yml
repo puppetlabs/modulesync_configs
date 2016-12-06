@@ -17,8 +17,10 @@
 - puppetlabs-postgresql
 - puppetlabs-rabbitmq
 - puppetlabs-stdlib
+- puppetlabs-satellite_pe_tools
 - puppetlabs-tagmail
 - puppetlabs-tftp
 - puppetlabs-tomcat
 - puppetlabs-vcsrepo
+- puppetlabs-websphere_application_server
 - puppetlabs-xinetd
