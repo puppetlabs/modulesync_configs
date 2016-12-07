@@ -21,4 +21,5 @@
 - puppetlabs-tftp
 - puppetlabs-tomcat
 - puppetlabs-vcsrepo
+- puppetlabs-vsphere
 - puppetlabs-xinetd
