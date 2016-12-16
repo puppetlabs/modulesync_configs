@@ -28,8 +28,16 @@ def location_for(place_or_version, fake_version = nil)
 end
 
 <%
-# Workaround to support boolean and array supports_windows settings until one form is no longer used
-supports_windows = (@configs['supports_windows'] == true || (@configs['supports_windows'].is_a?(Array) && @configs['supports_windows'].include?(@configs[:puppet_module])))
+# Workaround to support boolean supports_windows and hash+array supported_oss
+# settings until one form is no longer used
+supports_windows = (
+  @configs['supports_windows'] == true \
+  || (
+    @configs['supported_oss'].is_a?(Hash) \
+    && @configs['supported_oss'][@configs[:puppet_module]].is_a?(Array) \
+    && @configs['supported_oss'][@configs[:puppet_module]].include?('windows')
+  )
+)
 -%>
 # Used for gem conditionals
 supports_windows = <%= supports_windows %>
