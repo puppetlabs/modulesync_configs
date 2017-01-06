@@ -114,6 +114,7 @@ Gemfile:
         version: '~> 5.1'
         condition: "supports_windows"
       - gem: beaker-puppet_install_helper
+      - gem: beaker-module_install_helper
       - gem: master_manipulator
       - gem: beaker-hostgenerator
         from_env: 'BEAKER_HOSTGENERATOR_VERSION'
