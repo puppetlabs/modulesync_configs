@@ -75,29 +75,12 @@ Gemfile:
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.1.0')"
     ':system_tests':
       - gem: beaker
+        version: '>= 3'
         from_env: 'BEAKER_VERSION'
-        version: '~> 2.20'
-        condition: "supports_windows"
-      - gem: beaker
-        from_env: 'BEAKER_VERSION'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0') and ! supports_windows"
-      - gem: beaker
-        from_env: 'BEAKER_VERSION'
-        version: '< 3'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.3.0') and ! supports_windows"
       # beaker 3 requires this for PE installs
       - gem: beaker-pe
-        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
       - gem: beaker-rspec
         from_env: 'BEAKER_RSPEC_VERSION'
-        # newer version required to avoid BKR-537
-        version: '>= 3.4'
-        condition: "! supports_windows"
-      - gem: beaker-rspec
-        from_env: 'BEAKER_RSPEC_VERSION'
-        # newer version required to avoid BKR-537
-        version: '~> 5.1'
-        condition: "supports_windows"
       - gem: beaker-puppet_install_helper
       - gem: beaker-module_install_helper
       - gem: master_manipulator
@@ -138,7 +121,7 @@ NOTICE:
       begin: 'latest'
     # - name: '<name of holder>' (required)
     #   begin: <year or 'latest'> (optional) (latest is the year when modsync is run)
-    #   end:   <year or 'latest'> (optional) (latest is the year when modsync is run)    
+    #   end:   <year or 'latest'> (optional) (latest is the year when modsync is run)
 
 Rakefile:
   default_disabled_lint_checks:
