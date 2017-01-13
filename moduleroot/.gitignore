@@ -10,6 +10,9 @@ coverage/
 log/
 .idea/
 *.iml
+.yardoc
+.yardwarns
+doc/
 <% if ! @configs['paths'].nil? -%>
 <% @configs['paths'].each do |path| -%>
 <%= path %>
