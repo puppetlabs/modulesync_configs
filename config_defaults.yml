@@ -107,6 +107,9 @@ Gemfile:
         condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.1.0')"
       - gem: fast_gettext
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.1.0')"
+      # We don't want native extensions from rainbow
+      - gem: rainbow
+        version: '< 2.2.0'
     ':system_tests':
       - gem: beaker
         version: '>= 3'
@@ -123,11 +126,42 @@ Gemfile:
       - gem: beaker-abs
         from_env: 'BEAKER_ABS_VERSION'
         version: '~> 0.1'
+appveyor.yml:
+  appveyor_bundle_install: "bundle install --jobs 4 --retry 2 --without system_tests"
+  matrix:
+    - PUPPET_GEM_VERSION: '~> 4.0'
+      RUBY_VER: 21
+    - PUPPET_GEM_VERSION: '~> 4.0'
+      RUBY_VER: 21-x64
+    - PUPPET_GEM_VERSION: '~> 4.0'
+      RUBY_VER: 23
+    - PUPPET_GEM_VERSION: '~> 4.0'
+      RUBY_VER: 23-x64
+    # Oldest supported version
+    - PUPPET_GEM_VERSION: '4.2.3'
+      RUBY_VER: 21-x64
+  test_script:
+  - "bundle exec rake spec SPEC_OPTS='--format documentation'"
+
+LICENSE:
+  license_type: 'apache2' # Available options 'puppetpe' and 'apache2' (default is apache2)
+
+MAINTAINERS.md:
+  maintainers:
+    - "Puppet Forge Modules Team `forge-modules |at| puppet |dot| com`"
+
+# Apache 2 NOTICE file generation.  Please mark unmanaged:true if using puppetpe license type
+NOTICE:
+  copyright_holders:
+    - name: 'Puppet, Inc.'
+      begin: 'latest'
+    # - name: '<name of holder>' (required)
+    #   begin: <year or 'latest'> (optional) (latest is the year when modsync is run)
+    #   end:   <year or 'latest'> (optional) (latest is the year when modsync is run)
+
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
-  - 'disable_documentation'
-  - 'disable_single_quote_string_with_variables'
 
 spec/spec.opts:
   delete: true

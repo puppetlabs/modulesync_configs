@@ -1,12 +1,17 @@
 ---
 - puppetlabs-accounts
+- puppetlabs-acl
 - puppetlabs-apache
 - puppetlabs-apt
+- puppetlabs-chocolatey
 - puppetlabs-concat
+- puppetlabs-dism
+- puppetlabs-dsc
 - puppetlabs-firewall
 - puppetlabs-haproxy
 - puppetlabs-hocon
 - puppetlabs-ibm_installation_manager
+- puppetlabs-iis
 - puppetlabs-inifile
 - puppetlabs-java
 - puppetlabs-java_ks
@@ -15,11 +20,16 @@
 - puppetlabs-mysql
 - puppetlabs-ntp
 - puppetlabs-postgresql
+- puppetlabs-powershell
 - puppetlabs-rabbitmq
+- puppetlabs-reboot
+- puppetlabs-registry
+- puppetlabs-sqlserver
 - puppetlabs-stdlib
 - puppetlabs-tagmail
 - puppetlabs-tftp
 - puppetlabs-tomcat
 - puppetlabs-vcsrepo
 - puppetlabs-vsphere
+- puppetlabs-wsus_client
 - puppetlabs-xinetd

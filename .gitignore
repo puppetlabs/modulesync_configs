@@ -2,3 +2,10 @@
 /modulesync.yml
 /.bundle/
 /Gemfile.lock
+/Gemfile.local
+/.bundle/
+/.idea/
+/.metadata
+*.iml
+.*.sw[op]
+.DS_Store
