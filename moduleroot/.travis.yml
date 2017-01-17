@@ -10,13 +10,15 @@ before_install:
 matrix:
   fast_finish: true
   include:
-<% if @configs['docker_sets'] -%>
-<%   @configs['docker_sets'].each do |set| -%>
-<%     job = @configs['docker_defaults'].merge(set['options'] || {}) -%>
+<% if @configs['supported_oss'][@configs[:puppet_module]].include?('linux') -%>
+<%   if @configs['docker_sets'] -%>
+<%     @configs['docker_sets'].each do |set| -%>
+<%       job = @configs['docker_defaults'].merge(set['options'] || {}) -%>
   - rvm: <%= job['rvm'] %>
-<%     job.keys.sort.each do |k| -%>
-<%     next if k == 'rvm' -%>
+<%       job.keys.sort.each do |k| -%>
+<%       next if k == 'rvm' -%>
     <%= k %>: <%= job[k].gsub(/@@SET@@/, set['set']) %>
+<%       end -%>
 <%     end -%>
 <%   end -%>
 <% end -%>
