@@ -1,29 +1,63 @@
 ---
+:global:
+  supported_oss:
+    puppetlabs-acl:                      [windows]
+    puppetlabs-chocolatey:               [windows]
+    puppetlabs-dism:                     [windows]
+    puppetlabs-dsc:                      [windows]
+    puppetlabs-iis:                      [windows]
+    puppetlabs-powershell:               [windows]
+    puppetlabs-reboot:                   [windows]
+    puppetlabs-registry:                 [windows]
+    puppetlabs-sqlserver:                [windows]
+    puppetlabs-wsus_client:              [windows]
+    puppetlabs-inifile:                  [linux,windows]
+    puppetlabs-stdlib:                   [linux,windows]
+    puppetlabs-accounts:                 [linux]
+    puppetlabs-apache:                   [linux]
+    puppetlabs-apt:                      [linux]
+    puppetlabs-concat:                   [linux]
+    puppetlabs-firewall:                 [linux]
+    puppetlabs-haproxy:                  [linux]
+    puppetlabs-hocon:                    [linux]
+    puppetlabs-ibm_installation_manager: [linux]
+    puppetlabs-inifile:                  [linux]
+    puppetlabs-java:                     [linux]
+    puppetlabs-java_ks:                  [linux]
+    puppetlabs-mongodb:                  [linux]
+    puppetlabs-motd:                     [linux]
+    puppetlabs-mysql:                    [linux]
+    puppetlabs-ntp:                      [linux]
+    puppetlabs-postgresql:               [linux]
+    puppetlabs-rabbitmq:                 [linux]
+    puppetlabs-stdlib:                   [linux]
+    puppetlabs-tagmail:                  [linux]
+    puppetlabs-tftp:                     [linux]
+    puppetlabs-tomcat:                   [linux]
+    puppetlabs-vcsrepo:                  [linux]
+    puppetlabs-vsphere:                  [linux]
+    puppetlabs-xinetd:                   [linux]
 .travis.yml:
-  script: "\"bundle exec rake validate lint spec\""
+  script: "\"bundle exec rake release_checks\""
+  docker_sets:
+  - set: docker/ubuntu-14.04
+  - set: docker/centos-7
+  docker_defaults:
+    # values will replace @@SET@@ with the docker_sets' value
+    rvm: 2.3.1
+    sudo: required
+    dist: trusty
+    services: docker
+    env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_set=@@SET@@
+    script: bundle exec rake beaker
   includes:
-  - rvm: 1.9.3
-    env: PUPPET_GEM_VERSION="~> 3.0"
-  - rvm: 2.0.0
-    env: PUPPET_GEM_VERSION="~> 3.0"
-  - rvm: 2.1.5
-    env: PUPPET_GEM_VERSION="~> 4.0"
   - rvm: 2.3.1
     env: PUPPET_GEM_VERSION="~> 4.0"
-  - rvm: 2.0.0
-    env: PUPPET_GEM_VERSION="~> 3.0" FUTURE_PARSER="yes"
+    bundler_args: --without system_tests
+  - rvm: 2.1.7
+    env: PUPPET_GEM_VERSION="~> 4.0"
+    bundler_args: --without system_tests
 Gemfile:
-  supports_windows:
-    - puppetlabs-acl
-    - puppetlabs-chocolatey
-    - puppetlabs-dism
-    - puppetlabs-dsc
-    - puppetlabs-iis
-    - puppetlabs-powershell
-    - puppetlabs-reboot
-    - puppetlabs-registry
-    - puppetlabs-sqlserver
-    - puppetlabs-wsus_client
   required:
     ':development':
       - gem: puppet-lint
@@ -58,7 +92,10 @@ Gemfile:
         version: '0.41.2'
         condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.0.0')"
       - gem: rubocop
-        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.0.0')"
+        version: '0.45.0'
+        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.0.0') and supports_windows"
+      - gem: rubocop
+        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.0.0') and ! supports_windows"
       - gem: rubocop-rspec
         version: '~> 1.6'
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
