@@ -92,10 +92,7 @@ Gemfile:
         version: '0.41.2'
         condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.0.0')"
       - gem: rubocop
-        version: '0.45.0'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.0.0') and supports_windows"
-      - gem: rubocop
-        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.0.0') and ! supports_windows"
+        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.0.0')"
       - gem: rubocop-rspec
         version: '~> 1.6'
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
@@ -110,6 +107,9 @@ Gemfile:
         condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.1.0')"
       - gem: fast_gettext
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.1.0')"
+      # We don't want native extensions from rainbow
+      - gem: rainbow
+        version: '< 2.2.0'
     ':system_tests':
       - gem: beaker
         version: '>= 3'
@@ -129,10 +129,6 @@ Gemfile:
 appveyor.yml:
   appveyor_bundle_install: "bundle install --jobs 4 --retry 2 --without system_tests"
   matrix:
-    - PUPPET_GEM_VERSION: '~> 3.0'
-      RUBY_VER: 193
-    - PUPPET_GEM_VERSION: '~> 3.0'
-      RUBY_VER: 200-x64
     - PUPPET_GEM_VERSION: '~> 4.0'
       RUBY_VER: 21
     - PUPPET_GEM_VERSION: '~> 4.0'
@@ -141,6 +137,9 @@ appveyor.yml:
       RUBY_VER: 23
     - PUPPET_GEM_VERSION: '~> 4.0'
       RUBY_VER: 23-x64
+    # Oldest supported version
+    - PUPPET_GEM_VERSION: '4.2.3'
+      RUBY_VER: 21-x64
   test_script:
   - "bundle exec rake spec SPEC_OPTS='--format documentation'"
 
@@ -163,10 +162,6 @@ NOTICE:
 Rakefile:
   default_disabled_lint_checks:
   - 'relative'
-  - 'disable_80chars'
-  - 'disable_class_inherits_from_params_class'
-  - 'disable_documentation'
-  - 'disable_single_quote_string_with_variables'
 
 spec/spec.opts:
   delete: true
