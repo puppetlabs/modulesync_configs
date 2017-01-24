@@ -1,3 +1,15 @@
+<%
+# Determine the license types
+lictype = 'apache2'
+if @configs['license_type']
+  case @configs['license_type']
+  when 'puppetpe'
+    lictype = 'puppetpe'
+  end
+end
+
+# Default Apache 2 License
+if lictype == 'apache2' -%>
 
                                  Apache License
                            Version 2.0, January 2004
@@ -200,3 +212,16 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+   <%-
+end
+
+# Puppet PE Only License
+if lictype == 'puppetpe' -%>
+This Module is only available for users of Puppet Enterprise with a valid Software License Agreement
+for Puppet Enterprise.  This Module is not available for users of Puppet software under an open source license.
+
+By downloading this Module, you agree that you have a valid Software License Agreement with Puppet for
+Puppet Enterprise and you further agree that your use of this Module is governed by the terms of that
+Software License Agreement.
+<%
+end -%>
