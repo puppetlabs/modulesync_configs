@@ -21,6 +21,7 @@
 - puppetlabs-ntp
 - puppetlabs-postgresql
 - puppetlabs-powershell
+- puppetlabs-puppet_agent
 - puppetlabs-rabbitmq
 - puppetlabs-reboot
 - puppetlabs-registry
