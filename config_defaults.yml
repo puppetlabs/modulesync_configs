@@ -37,6 +37,13 @@
     puppetlabs-vcsrepo:                  [linux]
     puppetlabs-vsphere:                  [linux]
     puppetlabs-xinetd:                   [linux]
+
+.gitattributes:
+  include:
+    '*.rb': 'eol=lf'
+    '*.erb': 'eol=lf'
+    '*.pp': 'eol=lf'
+    '*.sh': 'eol=lf'
 .travis.yml:
   script: "\"bundle exec rake release_checks\""
   docker_sets:
