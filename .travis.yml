@@ -4,6 +4,6 @@ language: ruby
 rvm: 2.3.1
 cache: bundler
 # Run msync but in noop (Test Command).  Also, do not update the sqlserver/vsphere modules (regex escaped for yaml)
-script: 'bundle exec msync update --noop --git-base=https://github.com/ -x "\(sqlserver\|vsphere\)"'
+script: 'bundle exec msync update --noop --git-base=https://github.com/ -x "(sqlserver|vsphere)"'
 notifications:
   email: false
