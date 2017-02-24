@@ -29,6 +29,7 @@
     puppetlabs-mysql:                    [linux]
     puppetlabs-ntp:                      [linux]
     puppetlabs-postgresql:               [linux]
+    puppetlabs-puppet_agent:             [linux,windows]
     puppetlabs-rabbitmq:                 [linux]
     puppetlabs-stdlib:                   [linux]
     puppetlabs-tagmail:                  [linux]
