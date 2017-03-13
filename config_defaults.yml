@@ -173,3 +173,10 @@ Rakefile:
 
 spec/spec.opts:
   delete: true
+
+locales/config.yaml:
+  copyright_holder: 'Puppet, Inc.'
+  comments_tag: 'TRANSLATOR'
+  bugs_address: 'docs@puppet.com'
+  default_locale: 'en'
+  source_files: ['metadata.json']
