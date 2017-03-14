@@ -92,7 +92,8 @@ group <%= group %> do
   ", :git => '#{gem['git']}'" if gem['git'] %><%=
   ", :branch => '#{gem['branch']}'" if gem['branch'] %><%=
   ", :ref => '#{gem['ref']}'" if gem['ref'] %><%=
-  ", :platforms => '#{gem['platforms']}'" if gem['platforms'] %><%=
+  ", :platforms => #{gem['platforms']}" if gem['platforms'].is_a?(Array) %><%=
+  ", :platforms => '#{gem['platforms']}'" if gem['platforms'] && !gem['platforms'].is_a?(Array) %><%=
   " if #{gem['condition']}" if gem['condition'] %>
 <% end -%>
 end
