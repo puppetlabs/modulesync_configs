@@ -69,38 +69,16 @@ Gemfile:
   required:
     ':development':
       # Gems built using puppet-module-gems utility
-      - gem: 'puppet-module-posix-default-r2.1'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.3.0')"
+      - gem: 'puppet-module-posix-default-r#{minor_version}'
         platforms: 'ruby'
-      - gem: 'puppet-module-posix-default-r2.3'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
-        platforms: 'ruby'
-      - gem: 'puppet-module-win-default-r2.1'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.3.0')"
+      - gem: 'puppet-module-win-default-r#{minor_version}'
         platforms:
           - 'mswin'
           - 'mingw'
           - 'x64_mingw'
-      - gem: 'puppet-module-win-default-r2.3'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
-        platforms:
-          - 'mswin'
-          - 'mingw'
-          - 'x64_mingw'
-      - gem: 'puppet-module-posix-dev-r2.1'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.3.0')"
+      - gem: 'puppet-module-posix-dev-r#{minor_version}'
         platforms: 'ruby'
-      - gem: 'puppet-module-posix-dev-r2.3'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
-        platforms: 'ruby'
-      - gem: 'puppet-module-win-dev-r2.1'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.3.0')"
-        platforms:
-          - 'mswin'
-          - 'mingw'
-          - 'x64_mingw'
-      - gem: 'puppet-module-win-dev-r2.3'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
+      - gem: 'puppet-module-win-dev-r#{minor_version}'
         platforms:
           - 'mswin'
           - 'mingw'
@@ -117,20 +95,9 @@ Gemfile:
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.1.0')"
     ':system_tests':
       # Gems built using puppet-module-gems utility
-      - gem: 'puppet-module-posix-system-r2.1'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.3.0')"
+      - gem: 'puppet-module-posix-system-r#{minor_version}'
         platforms: 'ruby'
-      - gem: 'puppet-module-posix-system-r2.3'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
-        platforms: 'ruby'
-      - gem: 'puppet-module-win-system-r2.1'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.3.0')"
-        platforms:
-          - 'mswin'
-          - 'mingw'
-          - 'x64_mingw'
-      - gem: 'puppet-module-win-system-r2.3'
-        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
+      - gem: 'puppet-module-win-system-r#{minor_version}'
         platforms:
           - 'mswin'
           - 'mingw'
