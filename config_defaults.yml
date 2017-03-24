@@ -16,7 +16,7 @@
     puppetlabs-accounts:                 [linux]
     puppetlabs-apache:                   [linux]
     puppetlabs-apt:                      [linux]
-    puppetlabs-concat:                   [linux]
+    puppetlabs-concat:                   [linux,windows]
     puppetlabs-firewall:                 [linux]
     puppetlabs-haproxy:                  [linux]
     puppetlabs-hocon:                    [linux]
