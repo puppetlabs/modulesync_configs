@@ -83,6 +83,8 @@ Gemfile:
       # newer version required to PUP-5743
       - gem: rspec-puppet
         version: '>= 2.3.2'
+      - gem: yarjuf
+        version: '~> 2.0'
       # Only non-windows because it needs json
       - gem: rspec-puppet-facts
         platforms: 'ruby'
