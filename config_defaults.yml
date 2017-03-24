@@ -38,6 +38,7 @@
     puppetlabs-vcsrepo:                  [linux]
     puppetlabs-vsphere:                  [linux]
     puppetlabs-xinetd:                   [linux]
+    yang_ietf:                           [linux]
 
 .gitattributes:
   include:
