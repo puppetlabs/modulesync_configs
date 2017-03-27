@@ -25,3 +25,4 @@ gettext:
   <% @configs['source_files'].each do |glob| -%>
     - '<%= glob -%>'
   <% end if @configs['source_files'].size > 0 -%>
+

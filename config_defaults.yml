@@ -180,4 +180,4 @@ locales/config.yaml:
   comments_tag: 'TRANSLATOR'
   bugs_address: 'docs@puppet.com'
   default_locale: 'en'
-  source_files: ['metadata.json']
+  source_files: []
