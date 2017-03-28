@@ -41,6 +41,8 @@ supports_windows = (
 -%>
 # Used for gem conditionals
 supports_windows = <%= supports_windows %>
+ruby_version_segments = Gem::Version.new(RUBY_VERSION.dup).segments
+minor_version = "#{ruby_version_segments[0]}.#{ruby_version_segments[1]}"
 
 <% if supports_windows -%>
 # The following gems are not included by default as they require DevKit on Windows.
@@ -82,8 +84,8 @@ group <%= group %> do
 <%            gem['length'] -%>
 <%          end.max -%>
 <% gems.each do |gem| -%>
-  gem '<%=
-  gem['gem'] %>', <%
+  gem "<%=
+  gem['gem'] %>", <%
   if gem['from_env'] %>*location_for(ENV['<%= gem['from_env'] %>']<%= " || '#{gem['version']}'" if gem['version'] %>)<%
   else -%><%= "'#{gem['version']}', " if gem['version'] %><%
   end %><%=
@@ -92,7 +94,8 @@ group <%= group %> do
   ", :git => '#{gem['git']}'" if gem['git'] %><%=
   ", :branch => '#{gem['branch']}'" if gem['branch'] %><%=
   ", :ref => '#{gem['ref']}'" if gem['ref'] %><%=
-  ", :platforms => '#{gem['platforms']}'" if gem['platforms'] %><%=
+  ", :platforms => #{gem['platforms']}" if gem['platforms'].is_a?(Array) %><%=
+  ", :platforms => \"#{gem['platforms']}\"" if gem['platforms'] && !gem['platforms'].is_a?(Array) %><%=
   " if #{gem['condition']}" if gem['condition'] %>
 <% end -%>
 end
