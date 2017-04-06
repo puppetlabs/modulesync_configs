@@ -25,6 +25,7 @@
 - puppetlabs-rabbitmq
 - puppetlabs-reboot
 - puppetlabs-registry
+- puppetlabs-satellite_pe_tools
 - puppetlabs-sqlserver
 - puppetlabs-stdlib
 - puppetlabs-tagmail

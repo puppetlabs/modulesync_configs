@@ -31,6 +31,7 @@
     puppetlabs-postgresql:               [linux]
     puppetlabs-puppet_agent:             [linux,windows]
     puppetlabs-rabbitmq:                 [linux]
+    puppetlabs-satellite_pe_tools:       [linux]
     puppetlabs-stdlib:                   [linux]
     puppetlabs-tagmail:                  [linux]
     puppetlabs-tftp:                     [linux]
