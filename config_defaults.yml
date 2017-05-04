@@ -38,6 +38,7 @@
     puppetlabs-tomcat:                   [linux]
     puppetlabs-vcsrepo:                  [linux]
     puppetlabs-vsphere:                  [linux]
+    puppetlabs-windows:                  [windows]
     puppetlabs-xinetd:                   [linux]
     yang_ietf:                           [linux]
 

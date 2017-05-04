@@ -31,6 +31,7 @@
 - puppetlabs-tagmail
 - puppetlabs-tftp
 - puppetlabs-tomcat
+- puppetlabs-windows
 - puppetlabs-vcsrepo
 - puppetlabs-vsphere
 - puppetlabs-wsus_client
