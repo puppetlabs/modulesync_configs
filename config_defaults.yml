@@ -28,6 +28,7 @@
     puppetlabs-motd:                         [linux]
     puppetlabs-mysql:                        [linux]
     puppetlabs-ntp:                          [linux]
+    puppetlabs-netscaler:                    [linux]
     puppetlabs-postgresql:                   [linux]
     puppetlabs-puppet_agent:                 [linux,windows]
     puppetlabs-rabbitmq:                     [linux]
