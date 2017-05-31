@@ -165,3 +165,11 @@ locales/config.yaml:
   bugs_address: 'docs@puppet.com'
   default_locale: 'en'
   source_files: []
+
+spec/spec_helper.rb:
+spec/acceptance/nodesets/centos-7-x64.yml:
+spec/acceptance/nodesets/debian-8-x64.yml:
+spec/acceptance/nodesets/default.yml:
+spec/acceptance/nodesets/docker/centos-7.yml:
+spec/acceptance/nodesets/docker/debian-8.yml:
+spec/acceptance/nodesets/docker/ubuntu-14.04.yml:
