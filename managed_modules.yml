@@ -18,6 +18,7 @@
 - puppetlabs-mongodb
 - puppetlabs-motd
 - puppetlabs-mysql
+- puppetlabs-netscaler
 - puppetlabs-ntp
 - puppetlabs-postgresql
 - puppetlabs-powershell
