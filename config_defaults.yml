@@ -119,6 +119,8 @@ Gemfile:
       - gem: beaker-abs
         from_env: 'BEAKER_ABS_VERSION'
         version: '~> 0.1'
+      - gem: puppet-blacksmith
+        version: '~> 3.4'
 appveyor.yml:
   appveyor_bundle_install: "bundle install --jobs 4 --retry 2 --without system_tests"
   matrix:
