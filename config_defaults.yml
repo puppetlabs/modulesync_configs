@@ -25,7 +25,7 @@
     puppetlabs-java:                         [linux]
     puppetlabs-java_ks:                      [linux]
     puppetlabs-mongodb:                      [linux]
-    puppetlabs-motd:                         [linux]
+    puppetlabs-motd:                         [linux,windows]
     puppetlabs-mysql:                        [linux]
     puppetlabs-ntp:                          [linux]
     puppetlabs-netscaler:                    [linux]
