@@ -1,4 +1,4 @@
-Checklist (and a short version for the impatient)
+Checklist - short version
 =================================================
 
   * Commits:
@@ -18,7 +18,7 @@ Checklist (and a short version for the impatient)
       number(s)), and should skip the full stop.
 
     - Associate the issue in the message. The first line should include
-      the issue number in the form "(#XXXX) Rest of message".
+      the issue number in the form "(MODULES-XXXX) Rest of message".
 
     - The body should provide a meaningful commit message, which:
 
@@ -31,11 +31,11 @@ Checklist (and a short version for the impatient)
     - Make sure that you have tests for the bug you are fixing, or
       feature you are adding.
 
-    - Make sure the test suites passes after your commit:
+    - Make sure the test suites pass after your commit:
       `bundle exec rspec spec/acceptance` More information on [testing](#Testing) below
 
     - When introducing a new feature, make sure it is properly
-      documented in the README.md
+      documented in the [README.md](README.md)
 
   * Submission:
 
@@ -56,7 +56,7 @@ Checklist (and a short version for the impatient)
       - Submit a pull request to the repository in the puppetlabs
         organization.
 
-The long version
+Checklist - long version
 ================
 
   1.  Make separate commits for logically separate changes.
@@ -130,11 +130,11 @@ package manager such as [bundler](http://bundler.io/) what Ruby packages,
 or Gems, are required to build, develop, and test this software.
 
 Please make sure you have [bundler installed](http://bundler.io/#getting-started)
-on your system, then use it to install all dependencies needed for this project,
+on your system, then use it to install all dependencies needed for this project in the project root,
 by running
 
 ```shell
-% bundle install
+% bundle install --path .bundle/gems
 Fetching gem metadata from https://rubygems.org/........
 Fetching gem metadata from https://rubygems.org/..
 Using rake (10.1.0)
