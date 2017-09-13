@@ -36,6 +36,7 @@
     puppetlabs-tagmail:                      [linux]
     puppetlabs-tftp:                         [linux]
     puppetlabs-tomcat:                       [linux]
+    puppetlabs-translate:                    [linux]
     puppetlabs-vcsrepo:                      [linux]
     puppetlabs-vsphere:                      [linux]
     puppetlabs-websphere_application_server: [linux]
