@@ -31,10 +31,11 @@
 - puppetlabs-tagmail
 - puppetlabs-tftp
 - puppetlabs-tomcat
-- puppetlabs-windows
+- puppetlabs-translate
 - puppetlabs-vcsrepo
 - puppetlabs-vsphere
 - puppetlabs-websphere_application_server
+- puppetlabs-windows
 - puppetlabs-wsus_client
 - puppetlabs-xinetd
 - yang_ietf
