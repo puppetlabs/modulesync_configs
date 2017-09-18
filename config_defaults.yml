@@ -158,6 +158,8 @@ Rakefile:
   default_disabled_lint_checks:
   - 'relative'
 
+CONTRIBUTING.md:
+
 spec/spec.opts:
   delete: true
 
@@ -166,7 +168,8 @@ locales/config.yaml:
   comments_tag: 'TRANSLATOR'
   bugs_address: 'docs@puppet.com'
   default_locale: 'en'
-  source_files: []
+  source_files:
+    - './lib/**/*.rb'
 
 spec/spec_helper.rb:
 spec/acceptance/nodesets/centos-7-x64.yml:
