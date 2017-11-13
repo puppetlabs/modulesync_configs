@@ -5,6 +5,7 @@
     puppetlabs-chocolatey:                   [windows]
     puppetlabs-dism:                         [windows]
     puppetlabs-dsc:                          [windows]
+    puppetlabs-dsc_lite:                     [windows]
     puppetlabs-iis:                          [windows]
     puppetlabs-powershell:                   [windows]
     puppetlabs-reboot:                       [windows]
