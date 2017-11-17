@@ -16,7 +16,6 @@
 - puppetlabs-inifile
 - puppetlabs-java
 - puppetlabs-java_ks
-- puppetlabs-mongodb
 - puppetlabs-motd
 - puppetlabs-mysql
 - puppetlabs-netscaler

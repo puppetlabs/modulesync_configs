@@ -25,7 +25,6 @@
     puppetlabs-inifile:                      [linux]
     puppetlabs-java:                         [linux]
     puppetlabs-java_ks:                      [linux,windows]
-    puppetlabs-mongodb:                      [linux]
     puppetlabs-motd:                         [linux,windows]
     puppetlabs-mysql:                        [linux]
     puppetlabs-ntp:                          [linux]
