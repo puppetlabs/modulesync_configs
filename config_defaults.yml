@@ -24,7 +24,7 @@
     puppetlabs-ibm_installation_manager:     [linux]
     puppetlabs-inifile:                      [linux]
     puppetlabs-java:                         [linux]
-    puppetlabs-java_ks:                      [linux]
+    puppetlabs-java_ks:                      [linux,windows]
     puppetlabs-mongodb:                      [linux]
     puppetlabs-motd:                         [linux,windows]
     puppetlabs-mysql:                        [linux]
