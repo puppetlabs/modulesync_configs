@@ -131,6 +131,19 @@ extras: section with the same format to the module's .sync.yml.
 
 By setting the `docker_sets`, the .travis.yml file sets up full-system tests running in a docker container. `docker_defaults` allows you to specify or replace global defaults. Use the `options` entry on a docker set, to override individual options.
 
+You can add environment variable settings by adding an `env:` section to the
+module's `.sync.yml`.  The `env:` section may contain a `global:` section
+containing environment variables to be added to all builds, and/or a `matrix:`
+section, where each entry creates a new matrix entry to test.  For information,
+see https://docs.travis-ci.com/user/environment-variables/#Global-Variables .
+```
+.travis.yml:
+  env:
+    global:
+    # Reduce load on Travis servers to prevent tests from being killed
+    - PARALLEL_TEST_PROCESSORS=16
+```
+
 **`moduleroot/.rspec`**
 
 Flat file containing recommended default rspec options.

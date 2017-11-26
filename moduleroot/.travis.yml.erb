@@ -7,6 +7,21 @@ script: <%= @configs['script'] %>
 #Inserting below due to the following issue: https://github.com/travis-ci/travis-ci/issues/3531#issuecomment-88311203
 before_install:
   - gem update bundler
+<% if @configs['env'] -%>
+env:
+<%   if @configs['env']['global'] -%>
+  global:
+<%     @configs['env']['global'].each do |env| -%>
+    - <%= env %>
+<%     end -%>
+<%   end -%>
+<%   if @configs['env']['matrix'] -%>
+  matrix:
+<%     @configs['env']['matrix'].each do |env| -%>
+    - <%= env %>
+<%     end -%>
+<%   end -%>
+<% end -%>
 matrix:
   fast_finish: true
   include:
