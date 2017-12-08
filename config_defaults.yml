@@ -10,6 +10,7 @@
     puppetlabs-powershell:                   [windows]
     puppetlabs-reboot:                       [windows]
     puppetlabs-registry:                     [windows]
+    puppetlabs-scheduled_task:               [windows]
     puppetlabs-sqlserver:                    [windows]
     puppetlabs-wsus_client:                  [windows]
     puppetlabs-inifile:                      [linux,windows]

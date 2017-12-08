@@ -26,6 +26,7 @@
 - puppetlabs-reboot
 - puppetlabs-registry
 - puppetlabs-satellite_pe_tools
+- puppetlabs-scheduled_task
 - puppetlabs-sqlserver
 - puppetlabs-stdlib
 - puppetlabs-tagmail
