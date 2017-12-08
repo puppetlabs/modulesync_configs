@@ -161,6 +161,7 @@ Rakefile:
   - 'relative'
 
 CONTRIBUTING.md:
+  default_node_set: ./spec/acceptance/nodesets/default.yml  
 
 spec/spec.opts:
   delete: true
