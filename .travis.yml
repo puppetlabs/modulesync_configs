@@ -4,6 +4,6 @@ language: ruby
 rvm: 2.3.1
 cache: bundler
 # Run msync but in noop (Test Command).  Also, do not update the private modules (regex escaped for yaml)
-script: 'bundle exec msync update --noop --git-base=https://github.com/ -x "(sqlserver|vsphere|yang_ietf|satellite_pe_tools|websphere_application_server)"'
+script: 'bundle exec msync update --noop --git-base=https://github.com/ -x "(satellite_pe_tools|sqlserver|vsphere|websphere_application_server|yang_ietf|yang_openconfig)"'
 notifications:
   email: false
