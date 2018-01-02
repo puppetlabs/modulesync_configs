@@ -4,9 +4,6 @@ sudo: false
 language: ruby
 cache: bundler
 script: <%= @configs['script'] %>
-#Inserting below due to the following issue: https://github.com/travis-ci/travis-ci/issues/3531#issuecomment-88311203
-before_install:
-  - gem update bundler
 <% if @configs['env'] -%>
 env:
 <%   if @configs['env']['global'] -%>
