@@ -16,6 +16,7 @@
 - puppetlabs-inifile
 - puppetlabs-java
 - puppetlabs-java_ks
+- puppetlabs-mount_iso
 - puppetlabs-mysql
 - puppetlabs-netscaler
 - puppetlabs-ntp
