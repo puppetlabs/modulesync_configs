@@ -3,11 +3,14 @@
 - puppetlabs-acl
 - puppetlabs-apache
 - puppetlabs-apt
+- puppetlabs-bootstrap
 - puppetlabs-chocolatey
 - puppetlabs-concat
 - puppetlabs-dism
 - puppetlabs-dsc
 - puppetlabs-dsc_lite
+- puppetlabs-exec
+- puppetlabs-facter_task
 - puppetlabs-firewall
 - puppetlabs-haproxy
 - puppetlabs-hocon
@@ -20,13 +23,17 @@
 - puppetlabs-mysql
 - puppetlabs-netscaler
 - puppetlabs-ntp
+- puppetlabs-package
 - puppetlabs-postgresql
 - puppetlabs-powershell
 - puppetlabs-puppet_agent
+- puppetlabs-puppet_conf
 - puppetlabs-reboot
+- puppetlabs-resource
 - puppetlabs-registry
 - puppetlabs-satellite_pe_tools
 - puppetlabs-scheduled_task
+- puppetlabs-service
 - puppetlabs-sqlserver
 - puppetlabs-stdlib
 - puppetlabs-tagmail
@@ -40,3 +47,4 @@
 - puppetlabs-wsus_client
 - puppetlabs-xinetd
 - yang_ietf
+- yang_openconfig
