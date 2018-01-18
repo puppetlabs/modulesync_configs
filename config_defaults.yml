@@ -1,7 +1,6 @@
 ---
 :global:
   supported_oss:
-    puppetlabs-accounts:                     [linux]
     puppetlabs-acl:                          [windows]
     puppetlabs-apache:                       [linux]
     puppetlabs-apt:                          [linux]
