@@ -40,7 +40,6 @@
 - puppetlabs-tftp
 - puppetlabs-tomcat
 - puppetlabs-translate
-- puppetlabs-vcsrepo
 - puppetlabs-vsphere
 - puppetlabs-websphere_application_server
 - puppetlabs-windows
