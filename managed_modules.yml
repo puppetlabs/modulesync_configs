@@ -36,7 +36,6 @@
 - puppetlabs-service
 - puppetlabs-sqlserver
 - puppetlabs-stdlib
-- puppetlabs-tagmail
 - puppetlabs-tftp
 - puppetlabs-tomcat
 - puppetlabs-translate

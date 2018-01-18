@@ -38,7 +38,6 @@
     puppetlabs-service:                      [linux,windows]
     puppetlabs-sqlserver:                    [windows]
     puppetlabs-stdlib:                       [linux,windows]
-    puppetlabs-tagmail:                      [linux]
     puppetlabs-tftp:                         [linux]
     puppetlabs-tomcat:                       [linux]
     puppetlabs-translate:                    [linux]
