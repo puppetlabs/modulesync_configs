@@ -1,5 +1,4 @@
 ---
-- puppetlabs-accounts
 - puppetlabs-acl
 - puppetlabs-apache
 - puppetlabs-apt
