@@ -22,7 +22,6 @@
     puppetlabs-mount_iso:                    [windows]
     puppetlabs-mysql:                        [linux]
     puppetlabs-netscaler:                    [linux]
-    puppetlabs-ntp:                          [linux]
     puppetlabs-package:                      [linux,windows]
     puppetlabs-postgresql:                   [linux]
     puppetlabs-powershell:                   [windows]
