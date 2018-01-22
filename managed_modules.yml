@@ -1,7 +1,6 @@
 ---
 - puppetlabs-acl
 - puppetlabs-apache
-- puppetlabs-apt
 - puppetlabs-bootstrap
 - puppetlabs-chocolatey
 - puppetlabs-concat
