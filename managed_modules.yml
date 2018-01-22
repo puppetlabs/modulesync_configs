@@ -20,7 +20,6 @@
 - puppetlabs-mount_iso
 - puppetlabs-mysql
 - puppetlabs-netscaler
-- puppetlabs-ntp
 - puppetlabs-package
 - puppetlabs-postgresql
 - puppetlabs-powershell
