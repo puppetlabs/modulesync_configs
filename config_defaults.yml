@@ -12,7 +12,6 @@
     puppetlabs-exec:                         [linux,windows]
     puppetlabs-facter_task:                  [linux,windows]
     puppetlabs-firewall:                     [linux]
-    puppetlabs-haproxy:                      [linux]
     puppetlabs-hocon:                        [linux]
     puppetlabs-ibm_installation_manager:     [linux]
     puppetlabs-iis:                          [windows]
