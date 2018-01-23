@@ -14,7 +14,6 @@
 - puppetlabs-ibm_installation_manager
 - puppetlabs-iis
 - puppetlabs-inifile
-- puppetlabs-java
 - puppetlabs-java_ks
 - puppetlabs-mount_iso
 - puppetlabs-mysql
