@@ -9,7 +9,6 @@
 - puppetlabs-dsc_lite
 - puppetlabs-exec
 - puppetlabs-facter_task
-- puppetlabs-firewall
 - puppetlabs-hocon
 - puppetlabs-ibm_installation_manager
 - puppetlabs-iis
