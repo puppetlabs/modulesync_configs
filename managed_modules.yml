@@ -12,7 +12,6 @@
 - puppetlabs-hocon
 - puppetlabs-ibm_installation_manager
 - puppetlabs-iis
-- puppetlabs-inifile
 - puppetlabs-java_ks
 - puppetlabs-mount_iso
 - puppetlabs-mysql
