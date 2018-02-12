@@ -24,7 +24,6 @@
 - puppetlabs-resource
 - puppetlabs-registry
 - puppetlabs-satellite_pe_tools
-- puppetlabs-scheduled_task
 - puppetlabs-service
 - puppetlabs-sqlserver
 - puppetlabs-stdlib
