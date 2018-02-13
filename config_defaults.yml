@@ -15,7 +15,6 @@
     puppetlabs-iis:                          [windows]
     puppetlabs-java_ks:                      [linux,windows]
     puppetlabs-mount_iso:                    [windows]
-    puppetlabs-mysql:                        [linux]
     puppetlabs-netscaler:                    [linux]
     puppetlabs-package:                      [linux,windows]
     puppetlabs-postgresql:                   [linux]

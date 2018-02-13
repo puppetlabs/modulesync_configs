@@ -13,7 +13,6 @@
 - puppetlabs-iis
 - puppetlabs-java_ks
 - puppetlabs-mount_iso
-- puppetlabs-mysql
 - puppetlabs-netscaler
 - puppetlabs-package
 - puppetlabs-postgresql
