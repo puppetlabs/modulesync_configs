@@ -15,8 +15,16 @@ begin
     config.future_release = YAML.load_file('metadata.json')['version']
     config.since_tag = "<%= @configs['changelog_generator_since_tag'] %>"
     config.header = "# Change log\n\nAll notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org)."
-    config.add_pr_wo_labels = false
-    config.add_issues_wo_labels = false
+    # All PRs should be labeled.
+    config.add_pr_wo_labels = true
+    # We don't deal with issues, just PRs.
+    config.issues = false
+    # "maintenance" label is excluded from changelog.
+    config.exclude_labels = ["maintenance"]
+    # Make it obvious what prep work remains.
+    config.merge_prefix = "### UNCATEGORIZED PRS; GO LABEL THEM"
+    # Configure standard sections as per http://keepachangelog.com/ but without
+    # security/deprecated/removed sections as they do not conform to SemVer.
     config.configure_sections = {
       "Changed" => {
         "prefix" => "### Changed",

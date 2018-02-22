@@ -94,6 +94,9 @@ Gemfile:
         condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.1.0')"
       - gem: fast_gettext
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.1.0')"
+      - gem: 'github_changelog_generator'
+        from_env: 'GITHUB_CHANGELOG_GENERATOR_VERSION'
+        version: 'git@github.com:skywinder/github-changelog-generator#master'
     ':system_tests':
       # Gems built using puppet-module-gems utility
       - gem: 'puppet-module-posix-system-r#{minor_version}'
