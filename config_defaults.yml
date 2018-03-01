@@ -17,7 +17,6 @@
     puppetlabs-mount_iso:                    [windows]
     puppetlabs-netscaler:                    [linux]
     puppetlabs-package:                      [linux,windows]
-    puppetlabs-postgresql:                   [linux]
     puppetlabs-powershell:                   [windows]
     puppetlabs-puppet_agent:                 [linux,windows]
     puppetlabs-puppet_conf:                  [linux,windows]
