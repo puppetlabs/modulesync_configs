@@ -15,7 +15,6 @@
 - puppetlabs-mount_iso
 - puppetlabs-netscaler
 - puppetlabs-package
-- puppetlabs-postgresql
 - puppetlabs-powershell
 - puppetlabs-puppet_agent
 - puppetlabs-puppet_conf
