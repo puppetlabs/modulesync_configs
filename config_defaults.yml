@@ -25,7 +25,6 @@
     puppetlabs-registry:                     [windows]
     puppetlabs-resource:                     [linux,windows]
     puppetlabs-satellite_pe_tools:           [linux]
-    puppetlabs-service:                      [linux,windows]
     puppetlabs-sqlserver:                    [windows]
     puppetlabs-stdlib:                       [linux,windows]
     puppetlabs-tftp:                         [linux]
