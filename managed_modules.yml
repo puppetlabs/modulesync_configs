@@ -3,7 +3,6 @@
 - puppetlabs-apache
 - puppetlabs-bootstrap
 - puppetlabs-chocolatey
-- puppetlabs-concat
 - puppetlabs-dism
 - puppetlabs-dsc
 - puppetlabs-dsc_lite
@@ -11,10 +10,8 @@
 - puppetlabs-hocon
 - puppetlabs-ibm_installation_manager
 - puppetlabs-iis
-- puppetlabs-java_ks
 - puppetlabs-mount_iso
 - puppetlabs-netscaler
-- puppetlabs-package
 - puppetlabs-powershell
 - puppetlabs-puppet_agent
 - puppetlabs-puppet_conf
@@ -26,7 +23,6 @@
 - puppetlabs-sqlserver
 - puppetlabs-stdlib
 - puppetlabs-tftp
-- puppetlabs-tomcat
 - puppetlabs-translate
 - puppetlabs-vsphere
 - puppetlabs-websphere_application_server
