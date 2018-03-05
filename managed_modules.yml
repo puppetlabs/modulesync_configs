@@ -19,7 +19,6 @@
 - puppetlabs-resource
 - puppetlabs-registry
 - puppetlabs-satellite_pe_tools
-- puppetlabs-service
 - puppetlabs-sqlserver
 - puppetlabs-stdlib
 - puppetlabs-tftp
