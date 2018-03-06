@@ -3,7 +3,6 @@
   supported_oss:
     puppetlabs-acl:                          [windows]
     puppetlabs-apache:                       [linux]
-    puppetlabs-bootstrap:                    [linux,windows]
     puppetlabs-chocolatey:                   [windows]
     puppetlabs-dism:                         [windows]
     puppetlabs-dsc:                          [windows]

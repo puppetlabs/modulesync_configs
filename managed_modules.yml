@@ -1,7 +1,6 @@
 ---
 - puppetlabs-acl
 - puppetlabs-apache
-- puppetlabs-bootstrap
 - puppetlabs-chocolatey
 - puppetlabs-dism
 - puppetlabs-dsc
