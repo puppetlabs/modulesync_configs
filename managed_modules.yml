@@ -20,7 +20,6 @@
 - puppetlabs-registry
 - puppetlabs-satellite_pe_tools
 - puppetlabs-sqlserver
-- puppetlabs-stdlib
 - puppetlabs-tftp
 - puppetlabs-translate
 - puppetlabs-vsphere
