@@ -14,7 +14,6 @@
 - puppetlabs-netscaler
 - puppetlabs-powershell
 - puppetlabs-puppet_agent
-- puppetlabs-puppet_conf
 - puppetlabs-reboot
 - puppetlabs-resource
 - puppetlabs-registry
