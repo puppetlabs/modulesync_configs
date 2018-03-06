@@ -17,7 +17,6 @@
     puppetlabs-puppet_agent:                 [linux,windows]
     puppetlabs-reboot:                       [windows]
     puppetlabs-registry:                     [windows]
-    puppetlabs-resource:                     [linux,windows]
     puppetlabs-satellite_pe_tools:           [linux]
     puppetlabs-sqlserver:                    [windows]
     puppetlabs-tftp:                         [linux]
