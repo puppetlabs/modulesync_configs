@@ -6,7 +6,6 @@
 - puppetlabs-dism
 - puppetlabs-dsc
 - puppetlabs-dsc_lite
-- puppetlabs-facter_task
 - puppetlabs-hocon
 - puppetlabs-ibm_installation_manager
 - puppetlabs-iis

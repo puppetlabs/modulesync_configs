@@ -8,7 +8,6 @@
     puppetlabs-dism:                         [windows]
     puppetlabs-dsc:                          [windows]
     puppetlabs-dsc_lite:                     [windows]
-    puppetlabs-facter_task:                  [linux,windows]
     puppetlabs-hocon:                        [linux]
     puppetlabs-ibm_installation_manager:     [linux]
     puppetlabs-iis:                          [windows]
