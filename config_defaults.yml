@@ -16,7 +16,6 @@
     puppetlabs-netscaler:                    [linux]
     puppetlabs-powershell:                   [windows]
     puppetlabs-puppet_agent:                 [linux,windows]
-    puppetlabs-puppet_conf:                  [linux,windows]
     puppetlabs-reboot:                       [windows]
     puppetlabs-registry:                     [windows]
     puppetlabs-resource:                     [linux,windows]
