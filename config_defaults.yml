@@ -7,7 +7,6 @@
     puppetlabs-dsc:                          [windows]
     puppetlabs-dsc_lite:                     [windows]
     puppetlabs-hocon:                        [linux]
-    puppetlabs-ibm_installation_manager:     [linux]
     puppetlabs-iis:                          [windows]
     puppetlabs-mount_iso:                    [windows]
     puppetlabs-netscaler:                    [linux]

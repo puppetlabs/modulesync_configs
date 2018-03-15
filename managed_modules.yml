@@ -5,7 +5,6 @@
 - puppetlabs-dsc
 - puppetlabs-dsc_lite
 - puppetlabs-hocon
-- puppetlabs-ibm_installation_manager
 - puppetlabs-iis
 - puppetlabs-mount_iso
 - puppetlabs-netscaler
