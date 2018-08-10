@@ -1,9 +1,7 @@
 ---
-- puppetlabs-acl
 - puppetlabs-chocolatey
 - puppetlabs-dism
 - puppetlabs-dsc
-- puppetlabs-dsc_lite
 - puppetlabs-hocon
 - puppetlabs-iis
 - puppetlabs-mount_iso
@@ -18,7 +16,6 @@
 - puppetlabs-translate
 - puppetlabs-vsphere
 - puppetlabs-websphere_application_server
-- puppetlabs-windows
 - puppetlabs-wsus_client
 - puppetlabs-xinetd
 - yang_ietf
