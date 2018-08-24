@@ -4,7 +4,6 @@
 - puppetlabs-mount_iso
 - puppetlabs-netscaler
 - puppetlabs-puppet_agent
-- puppetlabs-reboot
 - puppetlabs-satellite_pe_tools
 - puppetlabs-tftp
 - puppetlabs-translate
