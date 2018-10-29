@@ -1,6 +1,10 @@
 ModuleSync Configs
 ==================
 
+⚠ **Using Module Sync is now deprecated.  Please do not add more managed modules. Modules should be converted to PDK format and removed from the [managed modules](managed_modules.yml) file** ⚠
+
+---
+
 This repository contains default configuration for
 [modulesync](http://github.com/puppetlabs/modulesync) for the Puppet Labs
 puppet modules. Changes to this repository should be synced with modulesync
