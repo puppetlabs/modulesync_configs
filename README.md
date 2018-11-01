@@ -1,7 +1,7 @@
 ModuleSync Configs
 ==================
 
-⚠ **Using Module Sync is now deprecated.  Please do not add more managed modules. Modules should be converted to PDK format and removed from the [managed modules](managed_modules.yml) file** ⚠
+⚠ **[PDK](https://puppet.com/docs/pdk/1.x/pdk.html) and [PDK Sync](https://github.com/puppetlabs/pdksync) should be used to manage [Puppet modules](https://forge.puppet.com/puppetlabs) instead of ModuleSync. Modules that are currently specified in the [managed modules](managed_modules.yml) file should be converted to PDK format, and then removed** ⚠
 
 ---
 
